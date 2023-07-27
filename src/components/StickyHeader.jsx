@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 const buttonStyle = (x, y) => {
   return x == y
     ? "text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium text-sm px-5 py-2.5 text-center"
-    : "bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4";
+    : "bg-gray-300 text-sm hover:bg-gray-400 text-gray-800 py-2 px-4";
 };
 
 const StickyHeader = ({ setTab, tab }) => {

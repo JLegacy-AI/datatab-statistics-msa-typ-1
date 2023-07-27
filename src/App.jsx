@@ -4,7 +4,7 @@ import StickyHeader from "./components/StickyHeader";
 import MsaType1 from "./pages/msa-type-1";
 
 function App() {
-  const [tab, setTab] = useState(3);
+  const [tab, setTab] = useState(0);
   const tabs = [
     <MsaType1 />,
     <p>Tab-2</p>,
