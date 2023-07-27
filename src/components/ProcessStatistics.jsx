@@ -1,18 +1,11 @@
 import React from "react";
 import jstat from "jStat";
 
-const ProcessStatistics = ({
-  data,
-  LSL = undefined,
-  USL = undefined,
-  xmin,
-  xmax,
-}) => {
+const ProcessStatistics = ({ data, referenceValue }) => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <h1 className="text-2xl font-semibold">Process Capability</h1>
           <h3 className="text-xl font-semibold bg-black text-white  text-center">
             Basic Statistics
           </h3>
@@ -20,7 +13,7 @@ const ProcessStatistics = ({
             <tbody>
               <tr>
                 <td>Reference Value</td>
-                <td>NaN</td>
+                <td>{referenceValue}</td>
               </tr>
               <tr>
                 <td>Measurements</td>
@@ -46,7 +39,9 @@ const ProcessStatistics = ({
           </table>
         </div>
         <div>
-          <h1 className="font-bold text-2xl">Bias</h1>
+          <h3 className="text-xl font-semibold bg-black text-white  text-center">
+            Bias
+          </h3>
           <table>
             <tbody>
               <tr>

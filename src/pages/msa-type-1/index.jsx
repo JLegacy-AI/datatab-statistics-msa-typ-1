@@ -12,19 +12,12 @@ import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
 
 const MsaType1 = () => {
+  const [referenceValue, setReferenceValue] = useState(null);
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(false);
   const [column, setColumn] = useState(0);
-  const [curve, setCurve] = useState("normal");
-  const [type, setType] = useState("probability");
-  const [target, setTarget] = useState(
-    jstat.mean(convertToArray(data, column))
-  );
   const [LSL, setLSL] = useState(null);
   const [USL, setUSL] = useState(null);
-  const [bins, setBins] = useState(6);
-  const [xmin, setXMin] = useState(null);
-  const [xmax, setXMax] = useState(null);
 
   const readFile = (file) => {
     const reader = new FileReader();
@@ -72,16 +65,6 @@ const MsaType1 = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  useEffect(() => {
-    if (curve == "normal")
-      setCurve(
-        typeof convertToArray(data, column)[0] == "string" &&
-          isNaN(convertToArray(data, column)[0])
-          ? "frequency"
-          : curve
-      );
-  }, [data, column]);
 
   const handleClearTable = () => {
     let emptyData = [];
@@ -143,21 +126,17 @@ const MsaType1 = () => {
               data={data}
               column={column}
               setColumn={setColumn}
-              setCurve={setCurve}
-              curve={curve}
-              type={type}
-              setType={setType}
               setLSL={setLSL}
               setUSL={setUSL}
-              setTarget={setTarget}
               LSL={LSL}
               USL={USL}
-              setBins={setBins}
-              bins={bins}
-              xmax={xmax}
-              xmin={xmin}
-              setXMax={setXMax}
-              setXMin={setXMin}
+              setReferenceValue={setReferenceValue}
+              referenceValue={referenceValue}
+            />
+            <hr className="border my-10" />
+            <ProcessStatistics
+              data={convertToArray(data, column)}
+              referenceValue={referenceValue}
             />
           </>
         ) : (

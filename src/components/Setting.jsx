@@ -31,20 +31,12 @@ const Setting = ({
   data,
   setColumn,
   column,
-  setCurve,
-  curve,
-  type,
-  setType,
   setLSL,
   setUSL,
-  setBins,
   LSL,
   USL,
-  bins,
-  setXMin,
-  setXMax,
-  xmin,
-  xmax,
+  referenceValue,
+  setReferenceValue,
 }) => {
   const [selectedButton, setSelectedButton] = useState(0);
 
@@ -108,72 +100,20 @@ const Setting = ({
             value={USL}
           />
         </div>
-        <div>
+        <div className="col-span-2">
           <label
-            htmlFor="Distibution"
+            htmlFor="USL"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Distribution
-          </label>
-          <select
-            id="countries"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            defaultValue={"none"}
-            value={curve}
-            disabled={isNaN(data[1][column])}
-            onChange={(e) => setCurve(e.target.value)}
-          >
-            <option value="none">None</option>
-            <option value="normal">Normal</option>
-          </select>
-        </div>
-        <div>
-          <label
-            htmlFor="no of bins"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            No of Bins
+            Reference Value
           </label>
           <input
             type="number"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             disabled={isNaN(data[1][column])}
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
-            onChange={(e) => setBins(e.target.value)}
-            value={bins}
-            min={0}
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="xmax"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Xmin
-          </label>
-          <input
-            type="number"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            disabled={isNaN(data[1][column])}
-            placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
-            value={xmin == null ? "" : xmin}
-            onChange={(e) => setXMin(e.target.value)}
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="xmax"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Xmax
-          </label>
-          <input
-            type="number"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            disabled={isNaN(data[1][column])}
-            placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
-            value={xmax == null ? "" : xmax}
-            onChange={(e) => setXMax(e.target.value)}
+            onChange={(e) => setReferenceValue(e.target.value)}
+            value={referenceValue}
           />
         </div>
       </div>

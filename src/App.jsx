@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ProcessCapability from "./components/ProcessCapability";
 import StickyHeader from "./components/StickyHeader";
 import MsaType1 from "./pages/msa-type-1";
 
