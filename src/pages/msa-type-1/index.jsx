@@ -134,6 +134,8 @@ const MsaType1 = () => {
               referenceValue={referenceValue}
             />
             <hr className="border my-10" />
+            <Results />
+            <hr className="border my-10" />
             <ProcessStatistics
               data={convertToArray(data, column)}
               referenceValue={referenceValue}

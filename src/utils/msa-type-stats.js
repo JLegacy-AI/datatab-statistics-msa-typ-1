@@ -1,27 +1,17 @@
+// import jStat from "jStat";
+
 // // Sample data arrays for reference values and measurements
 // const referenceValues = [10, 20, 30, 40, 50];
 // const measurements = [11, 19, 31, 41, 49];
 // const tolerance = 5;
-// // function to calculate the mean of an array
-// function calculateMean(array) {
-//   const sum = array.reduce((total, value) => total + value, 0);
-//   return sum / array.length;
-// }
-// // function to calculate the standard deviaon of an array
-// function calculateStandardDeviaon(array) {
-//   const mean = calculateMean(array);
-//   const squaredDifferences = array.map((value) => Math.pow(value - mean, 2));
-//   const variance =
-//     squaredDifferences.reduce((total, value) => total + value, 0) /
-//     array.length;
-//   return Math.sqrt(variance);
-// }
+
 // // function to calculate the bias
 // function calculateBias(referenceValues, measurements) {
-//   const meanReference = calculateMean(referenceValues);
-//   const meanMeasurements = calculateMean(measurements);
+//   const meanReference = jStat.mean(referenceValues);
+//   const meanMeasurements = jStat.stdev(measurements);
 //   return meanMeasurements - meanReference;
 // }
+
 // // function to calculate the p-value for bias using t-test
 // function calculatePValueForBias(referenceValues, measurements) {
 //   const n = referenceValues.length;
@@ -29,7 +19,7 @@
 //   const standardDeviaon = calculateStandardDeviaon(measurements);
 //   const standardError = standardDeviaon / Math.sqrt(n);
 //   const tStasc = bias / standardError;
-//   const degreesOfFreedom = n - 1;
+//   const degreesOfFreedom = n - 2;
 //   const pValue = 2 * (1 - tDistribuonCDF(Math.abs(tStasc), degreesOfFreedom));
 //   return pValue;
 // }
