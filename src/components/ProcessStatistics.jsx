@@ -12,6 +12,14 @@ const ProcessStatistics = ({ data, referenceValue }) => {
           <table>
             <tbody>
               <tr>
+                <td>Cg</td>
+                <td>NaN</td>
+              </tr>
+              <tr>
+                <td>Cgk</td>
+                <td>NaN</td>
+              </tr>
+              <tr>
                 <td>Reference Value</td>
                 <td>{referenceValue}</td>
               </tr>
