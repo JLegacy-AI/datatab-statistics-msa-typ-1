@@ -1,9 +1,7 @@
 import React from "react";
+import Chart from "./Chart";
 
-const Results = ({ data, column, curve, bins, xmax, xmin, LSL, USL }) => {
-  xmax = xmax == null ? Math.max(data) : xmax;
-  xmin = xmin == null ? Math.min(data) : xmin;
-
+const Results = ({ data, column, LSL, USL, referenceValue }) => {
   return (
     <div>
       <h1 className="font-bold text-2xl">Results</h1>
@@ -12,9 +10,18 @@ const Results = ({ data, column, curve, bins, xmax, xmin, LSL, USL }) => {
           <h1 className="bg-[#1f77b4] min-w-[200px] px-3 text-center rounded-sm text-white shadow-md">
             {`Histogram of ${column}`}
           </h1>
-          <p className="h-[200px] flex justify-center items-center font-light text-xl min-w-[400px]">
-            No Data Found Yet
-          </p>
+          {data.length == 0 ? (
+            <p className="h-[200px] flex justify-center items-center font-light text-xl">
+              No Data Found Yet
+            </p>
+          ) : (
+            <Chart
+              data={data}
+              LSL={LSL}
+              USL={USL}
+              referenceValue={referenceValue}
+            />
+          )}
         </div>
       </div>
     </div>

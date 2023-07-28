@@ -1,7 +1,16 @@
 import React from "react";
 import jstat from "jStat";
 
-const ProcessStatistics = ({ data, referenceValue }) => {
+const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
+  const tolerance = USL - LSL;
+  const standardDeviation = jstat.stdev(data);
+  const mean = jstat.mean(data);
+  let cg = tolerance / (6 * standardDeviation);
+  let cgk = Math.abs(mean - tolerance) / (3 * standardDeviation);
+  if (data.length < 2) {
+    cg = "";
+    cgk = "";
+  }
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -13,11 +22,11 @@ const ProcessStatistics = ({ data, referenceValue }) => {
             <tbody>
               <tr>
                 <td>Cg</td>
-                <td>NaN</td>
+                <td>{typeof cg === "string" ? cg : cg.toFixed(6)}</td>
               </tr>
               <tr>
                 <td>Cgk</td>
-                <td>NaN</td>
+                <td>{typeof cgk === "string" ? cgk : cgk.toFixed(6)}</td>
               </tr>
               <tr>
                 <td>Reference Value</td>

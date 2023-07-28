@@ -12,12 +12,12 @@ import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
 
 const MsaType1 = () => {
-  const [referenceValue, setReferenceValue] = useState(null);
+  const [referenceValue, setReferenceValue] = useState();
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(false);
   const [column, setColumn] = useState(0);
-  const [LSL, setLSL] = useState(null);
-  const [USL, setUSL] = useState(null);
+  const [LSL, setLSL] = useState();
+  const [USL, setUSL] = useState();
 
   const readFile = (file) => {
     const reader = new FileReader();
@@ -134,11 +134,18 @@ const MsaType1 = () => {
               referenceValue={referenceValue}
             />
             <hr className="border my-10" />
-            <Results />
+            <Results
+              data={convertToArray(data, column)}
+              LSL={LSL}
+              USL={USL}
+              referenceValue={referenceValue}
+            />
             <hr className="border my-10" />
             <ProcessStatistics
               data={convertToArray(data, column)}
               referenceValue={referenceValue}
+              LSL={LSL}
+              USL={USL}
             />
           </>
         ) : (

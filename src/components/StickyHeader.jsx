@@ -21,13 +21,10 @@ const StickyHeader = ({ setTab, tab }) => {
         <button className={buttonStyle(tab, 1)} onClick={() => setTab(1)}>
           MSA Typ 2
         </button>
-        <button className={buttonStyle(tab, 2)} onClick={() => setTab(2)}>
-          MSA Typ 3
-        </button>
-        <button className={buttonStyle(tab, 3)} onClick={() => setTab(3)}>
+        <button className={buttonStyle(tab, 3)} onClick={() => setTab(2)}>
           Prozessfähigkeit
         </button>
-        <button className={buttonStyle(tab, 4)} onClick={() => setTab(4)}>
+        <button className={buttonStyle(tab, 4)} onClick={() => setTab(3)}>
           Regelkarten
         </button>
       </div>
