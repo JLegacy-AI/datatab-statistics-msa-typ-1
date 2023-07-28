@@ -22,19 +22,6 @@ const Chart = ({ data, LSL, USL, referenceValue }) => {
             mode: "lines",
             marker: { color: "green" },
           },
-          // {
-          //   x: [0, data.length],
-          //   y: [
-          //     referenceValue - 0.1 * tolerance,
-          //     referenceValue - 0.1 * tolerance,
-          //   ],
-          //   mode: "lines",
-          // },
-          // {
-          //   x: [0, data.length],
-          //   y: [referenceValue + tolerance, referenceValue tolerance],
-          //   mode: "lines",
-          // },
         ]}
         layout={{
           width: 660,
