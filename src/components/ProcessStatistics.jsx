@@ -1,5 +1,6 @@
 import React from "react";
 import jstat from "jStat";
+import { calculateBias, calculateT } from "../utils/utils";
 
 const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
   const tolerance = USL - LSL;
@@ -11,6 +12,10 @@ const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
     cg = "";
     cgk = "";
   }
+
+  const bias = calculateBias(data, referenceValue);
+  const tValue = calculateT(data, referenceValue);
+  const pValue = jstat.ttest(Number(referenceValue), data, 2);
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -34,7 +39,7 @@ const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
               </tr>
               <tr>
                 <td>Measurements</td>
-                <td>NaN</td>
+                <td>{data.length}</td>
               </tr>
               <tr>
                 <td>Average</td>
@@ -50,7 +55,11 @@ const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
               </tr>
               <tr>
                 <td>Tolerance</td>
-                <td>NaN</td>
+                <td>
+                  {isNaN(USL) || isNaN(LSL)
+                    ? ""
+                    : Number(Math.abs(USL - LSL).toFixed(4))}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -63,15 +72,15 @@ const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
             <tbody>
               <tr>
                 <td>Bias</td>
-                <td>NaN</td>
+                <td>{bias}</td>
               </tr>
               <tr>
                 <td>T</td>
-                <td>NaN</td>
+                <td>{tValue}</td>
               </tr>
               <tr>
                 <td>P-Value</td>
-                <td>NaN</td>
+                <td>{isNaN(pValue) ? "NaN" : pValue.toFixed(5)}</td>
               </tr>
             </tbody>
           </table>

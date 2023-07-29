@@ -1,3 +1,4 @@
+import jstat from "jStat";
 import jState from "jStat";
 
 const curves = (data) => {
@@ -187,6 +188,34 @@ function generateNormalDistributionCurve(dataPoints, numStdDeviations) {
   }
 
   return curve;
+}
+
+export function calculateBias(dataArray, benchmarkValue) {
+  if (dataArray.length === 0 || isNaN(benchmarkValue)) {
+    return "NaN";
+  }
+
+  // Calculate the mean of the data array
+  const dataMean = jstat.mean(dataArray);
+
+  // Calculate the bias as the difference between the data mean and the benchmark value
+  const bias = dataMean - benchmarkValue;
+
+  return Number(bias.toFixed(6));
+}
+
+export function calculateT(dataArray, referenceValue) {
+  if (dataArray.length === 0 || isNaN(referenceValue)) {
+    return "NaN";
+  }
+  const mean = Number(jstat.mean(dataArray));
+  const stdev = Number(jstat.stdev(dataArray));
+  return Number(
+    (
+      ((mean - Number(referenceValue)) * Math.sqrt(dataArray.length)) /
+      stdev
+    ).toFixed(6)
+  );
 }
 
 export {

@@ -1,3 +1,4 @@
+import jstat from "jStat";
 import React from "react";
 import Plot from "react-plotly.js";
 
@@ -29,7 +30,7 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
           },
           {
             x: [1, data.length],
-            y: [referenceValue, referenceValue],
+            y: [jstat.mean(data), jstat.mean(data)],
             mode: "lines",
             marker: { color: "green" },
           },
