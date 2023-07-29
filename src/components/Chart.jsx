@@ -1,10 +1,21 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
-const Chart = ({ data, LSL, USL, referenceValue }) => {
-  const tolerance = 0.1 * 11.45;
-  console.log(Number(referenceValue) - tolerance);
-  console.log(Number(referenceValue) + tolerance);
+const Chart = ({ data, LSL, USL, referenceValue, column }) => {
+  const tolerance = Math.abs(USL - LSL);
+  const startRange = Math.min(
+    ...data,
+    isNaN(LSL) ? data[0] : LSL,
+    isNaN(USL) ? data[0] : USL,
+    isNaN(referenceValue) ? data[0] : referenceValue
+  );
+  const endRange = Math.max(
+    ...data,
+    isNaN(LSL) ? data[0] : LSL,
+    isNaN(USL) ? data[0] : USL,
+    isNaN(referenceValue) ? data[0] : referenceValue
+  );
+
   return (
     <div>
       <Plot
@@ -14,13 +25,31 @@ const Chart = ({ data, LSL, USL, referenceValue }) => {
             y: data.map((v, i) => v),
             type: "scatter",
             mode: "lines+markers",
-            marker: { color: "blue" },
+            marker: { color: "#1f77b4" },
           },
           {
-            x: [0, data.length],
+            x: [1, data.length],
             y: [referenceValue, referenceValue],
             mode: "lines",
             marker: { color: "green" },
+          },
+          {
+            x: [1, data.length],
+            y: [
+              Number(referenceValue) + 0.1 * tolerance,
+              Number(referenceValue) + 0.1 * tolerance,
+            ],
+            mode: "lines",
+            marker: { color: "red" },
+          },
+          {
+            x: [1, data.length],
+            y: [
+              Number(referenceValue) - 0.1 * tolerance,
+              Number(referenceValue) - 0.1 * tolerance,
+            ],
+            mode: "lines",
+            marker: { color: "red" },
           },
         ]}
         layout={{
@@ -32,8 +61,12 @@ const Chart = ({ data, LSL, USL, referenceValue }) => {
             zeroline: false,
           },
           yaxis: {
-            title: "Probability",
-
+            title: column,
+            showticklabels: true,
+            range: [
+              startRange - startRange * 0.01,
+              endRange + startRange * 0.01,
+            ],
             zeroline: false,
           },
           showlegend: false,

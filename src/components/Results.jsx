@@ -20,6 +20,7 @@ const Results = ({ data, column, LSL, USL, referenceValue }) => {
               LSL={LSL}
               USL={USL}
               referenceValue={referenceValue}
+              column={column}
             />
           )}
         </div>
