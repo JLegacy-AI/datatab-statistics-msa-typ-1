@@ -80,7 +80,7 @@ const Setting = ({
             disabled={isNaN(data[1][column])}
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setLSL(e.target.value)}
-            value={LSL}
+            value={LSL == undefined ? 0 : LSL}
           />
         </div>
 
@@ -97,7 +97,7 @@ const Setting = ({
             disabled={isNaN(data[1][column])}
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setUSL(e.target.value)}
-            value={USL}
+            value={USL == undefined ? 0 : USL}
           />
         </div>
         <div className="col-span-2">
@@ -113,7 +113,7 @@ const Setting = ({
             disabled={isNaN(data[1][column])}
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setReferenceValue(e.target.value)}
-            value={referenceValue}
+            value={referenceValue == undefined ? 0 : referenceValue}
           />
         </div>
       </div>
