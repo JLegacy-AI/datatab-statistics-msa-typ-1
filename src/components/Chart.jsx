@@ -4,19 +4,7 @@ import Plot from "react-plotly.js";
 
 const Chart = ({ data, LSL, USL, referenceValue, column }) => {
   const tolerance = Math.abs(USL - LSL);
-  const startRange = Math.min(
-    ...data,
-    isNaN(LSL) ? data[0] : LSL,
-    isNaN(USL) ? data[0] : USL,
-    isNaN(referenceValue) ? data[0] : referenceValue
-  );
-  const endRange = Math.max(
-    ...data,
-    isNaN(LSL) ? data[0] : LSL,
-    isNaN(USL) ? data[0] : USL,
-    isNaN(referenceValue) ? data[0] : referenceValue
-  );
-
+  const mean = jstat.mean(data);
   return (
     <div>
       <Plot
@@ -30,25 +18,19 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
           },
           {
             x: [1, data.length],
-            y: [jstat.mean(data), jstat.mean(data)],
+            y: [mean, mean],
             mode: "lines",
             marker: { color: "green" },
           },
           {
             x: [1, data.length],
-            y: [
-              Number(referenceValue) + 0.1 * tolerance,
-              Number(referenceValue) + 0.1 * tolerance,
-            ],
+            y: [mean + 0.1 * tolerance, mean + 0.1 * tolerance],
             mode: "lines",
             marker: { color: "red" },
           },
           {
             x: [1, data.length],
-            y: [
-              Number(referenceValue) - 0.1 * tolerance,
-              Number(referenceValue) - 0.1 * tolerance,
-            ],
+            y: [mean - 0.1 * tolerance, mean - 0.1 * tolerance],
             mode: "lines",
             marker: { color: "red" },
           },
@@ -64,10 +46,6 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
           yaxis: {
             title: column,
             showticklabels: true,
-            range: [
-              startRange - startRange * 0.01,
-              endRange + startRange * 0.01,
-            ],
             zeroline: false,
           },
           showlegend: false,
