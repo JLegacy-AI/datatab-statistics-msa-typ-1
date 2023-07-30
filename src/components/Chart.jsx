@@ -40,7 +40,7 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
           height: 400,
           autosize: false,
           xaxis: {
-            title: "Values",
+            title: "Beobachtung",
             zeroline: false,
           },
           yaxis: {
