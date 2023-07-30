@@ -1,8 +1,8 @@
 {
-  "name": "datatab-analysis-msa-type-1",
+  "name": "datatab-analysis-msa-typ-1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://qm-datalab.de/msatype1",
+  "homepage": "https://qm-datalab.de/msatyp1",
   "dependencies": {
     "@babel/plugin-prosposal-private-property-in-object": "^7.21.11",
     "@handsontable/react": "^13.0.0",
