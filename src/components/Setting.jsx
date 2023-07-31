@@ -37,6 +37,10 @@ const Setting = ({
   USL,
   referenceValue,
   setReferenceValue,
+  k,
+  setK,
+  percentageTolerance,
+  setPercentageTolerance,
 }) => {
   const [selectedButton, setSelectedButton] = useState(0);
 
@@ -114,6 +118,39 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setReferenceValue(e.target.value)}
             value={referenceValue == undefined ? 0 : referenceValue}
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="LSL"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            % tolerance
+          </label>
+          <input
+            type="number"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            disabled={isNaN(data[1][column])}
+            placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
+            onChange={(e) => setPercentageTolerance(e.target.value)}
+            value={percentageTolerance == undefined ? 0 : percentageTolerance}
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="USL"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            k
+          </label>
+          <input
+            type="number"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            disabled={isNaN(data[1][column])}
+            placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
+            onChange={(e) => setK(e.target.value)}
+            value={k == undefined ? 0 : k}
           />
         </div>
       </div>

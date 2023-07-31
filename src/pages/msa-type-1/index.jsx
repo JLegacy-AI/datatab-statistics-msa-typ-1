@@ -18,6 +18,8 @@ const MsaType1 = () => {
   const [column, setColumn] = useState(0);
   const [LSL, setLSL] = useState();
   const [USL, setUSL] = useState();
+  const [k, setK] = useState(4);
+  const [percentageTolerance, setPercentageTolerance] = useState(20);
 
   const readFile = (file) => {
     const reader = new FileReader();
@@ -130,6 +132,10 @@ const MsaType1 = () => {
               setUSL={setUSL}
               LSL={LSL}
               USL={USL}
+              k={k}
+              setK={setK}
+              percentageTolerance={percentageTolerance}
+              setPercentageTolerance={setPercentageTolerance}
               setReferenceValue={setReferenceValue}
               referenceValue={referenceValue}
             />
