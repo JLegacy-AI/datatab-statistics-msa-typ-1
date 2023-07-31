@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
-const buttonStyle = (x, y) => {
-  return x == y
+const buttonStyle = (x) => {
+  return x
     ? "text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium text-sm px-5 py-2.5 text-center"
     : "bg-gray-300 text-sm hover:bg-gray-400 text-gray-800 py-2 px-4";
 };
 
-const StickyHeader = ({ setTab, tab }) => {
+const StickyHeader = () => {
   return (
     <div
       style={{ zIndex: 10000 }}
@@ -15,18 +15,21 @@ const StickyHeader = ({ setTab, tab }) => {
     >
       <Navbar />
       <div className="px-20 pb-3 inline-flex">
-        <button className={buttonStyle(tab, 0)} onClick={() => setTab(0)}>
+        <a className={buttonStyle(true)} href="#">
           MSA Typ 1
-        </button>
-        <button className={buttonStyle(tab, 1)} onClick={() => setTab(1)}>
+        </a>
+        <a className={buttonStyle(false)} href="#">
           MSA Typ 2
-        </button>
-        <button className={buttonStyle(tab, 2)} onClick={() => setTab(2)}>
+        </a>
+        <a
+          className={buttonStyle(false)}
+          href="https://qm-datalab.de/prozessfaehigkeitsanalyse"
+        >
           Prozessfähigkeit
-        </button>
-        <button className={buttonStyle(tab, 3)} onClick={() => setTab(3)}>
+        </a>
+        <a className={buttonStyle(false)} href="#">
           Regelkarten
-        </button>
+        </a>
       </div>
     </div>
   );
