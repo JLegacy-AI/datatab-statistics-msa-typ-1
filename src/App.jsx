@@ -7,8 +7,8 @@ function App() {
   const tabs = [
     <MsaType1 />,
     <p>Tab-2</p>,
+    <p>Tab-3</p>,
     <p>Tab-4</p>,
-    <p>Tab-5</p>,
   ];
 
   return (
