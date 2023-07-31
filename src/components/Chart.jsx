@@ -20,7 +20,19 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
             x: [1, data.length],
             y: [mean, mean],
             mode: "lines",
-            marker: { color: "green" },
+            line: {
+              dash: "dot",
+            },
+            marker: { color: "blue" },
+          },
+          {
+            x: [1, data.length],
+            y: [referenceValue, referenceValue],
+            mode: "lines",
+            line: {
+              dash: "dot",
+            },
+            marker: { color: "red" },
           },
           {
             x: [1, data.length],

@@ -1,224 +1,115 @@
 import React from "react";
-import IMAGE_1 from "../assets/1.jpeg";
-import IMAGE_2 from "../assets/2.jpeg";
 
 const ContentComponent = () => {
   return (
     <div className="flex flex-col gap-4 mt-10 pr-20">
       <h1 className="font-bold text-2xl w-9/12">
-        Prozessfähigkeitsanalyse online und kostenlos mit dem Analyse Tool von
-        QM-Datalab
+        Messsystem Analyse Type 1: Nutzen, Berechnung und Bewertung der
+        systematischen und zufälligen Abweichungen vom Messnormal (Cg und Cgk)
       </h1>
+      <h1 className="font-semibold text-xl w-9/12">Einleitung</h1>
       <p>
-        Analysiere unkompliziert und kostenlos online deine Prozessdaten. Füge
-        einfach deine Daten in das QM-Datalab Tool ein, wähle aus welche Daten
-        du auswerten möchtest und QM-Datalab erstellt dir alle benötigten
-        Analysen, Kennwerte und Diagramme.
+        Die Messsystem Analyse Type 1 ist eine unverzichtbare Methode zur
+        Bewertung und Überwachung der Genauigkeit und Zuverlässigkeit von
+        Messsystemen. Durch die IdenDfizierung systemaDscher Abweichungen vom
+        Messnormal ermöglicht sie eine effekDve OpDmierung und
+        Qualitätssteigerung von Messprozessen. In diesem ArDkel werden wir den
+        Nutzen der Messsystem Analyse Type 1 erläutern und einen Einblick in die
+        Berechnung und Bewertung der systemaDschen Abweichungen geben. Besonders
+        relevant sind dabei die Kenngrößen Cg und Cgk, die eine präzise
+        Beurteilung der Messsystemleistung ermöglichen.
       </p>
       <h1 className="font-semibold text-xl w-9/12">
-        Die großen Vorteile von QM-Datalab
-      </h1>
-      <ul className="list-disc pl-16">
-        <li>
-          Von QM-Manager für QM-Manager: Genau die Analysen, die du brauchst
-        </li>
-        <li>
-          100% Datensicherheit: Die Analysen werden nur auf deinem Gerät im
-          Browser durchgeführt, es werden keinerlei Daten an Server gesendet
-        </li>
-        <li>Einzigartige Nutzerfreundlichkeit: Alle Analysen auf Knopfdruck</li>
-        <li>Kein Installations- und Wartungsaufwand: Direkt im Browser</li>
-      </ul>
-      <h1 className="font-bold text-2xl w-9/12">
-        Prozessfähigkeitsanalyse im Qualitätsmanagement
+        Nutzen der Messsystem Analyse Type 1
       </h1>
       <p>
-        Die Prozessfähigkeitsanalyse ist eine wertvolle statistische Methode um
-        die inhärente Fähigkeit eines Prozesses, die Kundenspezifikationen zu
-        erfüllen, zu bewerten und quantifizieren. Sie bietet Organisationen
-        Einblicke in die Leistungsfähigkeit ihrer Prozesse und hilft dabei,
-        Verbesserungspotenziale zu identifizieren. Wir werden den Zweck der
-        Prozessfähigkeitsanalyse erläutern und uns mit den wichtigsten
-        Kennzahlen befassen, nämlich Cm, Cmk, Cp und Cpk.
+        Die Messsystem Analyse Type 1 ist ein bewährtes Werkzeug, um die
+        Qualität und Präzision von Messprozessen zu bewerten. Sie bietet
+        zahlreiche Vorteile für Unternehmen, einschließlich: <br />
+        Verbesserung der Produktqualität: Durch die IdenDfizierung und
+        Minimierung systemaDscher Abweichungen vom Messnormal wird die
+        Messgenauigkeit erhöht, was zu einer besseren Produktqualität führt.
+        <br />
+        Kosteneinsparungen: Ein opDmiertes Messsystem reduziert Ausschuss und
+        FehlinterpretaDonen, wodurch Kosten gesenkt werden können.
+        <br />
+        Kundenvertrauen: Zuverlässige Messergebnisse erhöhen das Vertrauen der
+        Kunden in die Produkte und Dienstleistungen eines Unternehmens.
+        <br />
+        ProzessopDmierung: Eine fundierte Analyse der Messsysteme ermöglicht die
+        IdenDfizierung von Verbesserungspotenzialen in den Prozessen, was zu
+        Effizienzsteigerungen führt. <br />
+        Abschnitt 2: Berechnung der systemaDschen Abweichung (ca. 300 Wörter):
+        Die Berechnung der systemaDschen Abweichung vom Messnormal ist ein
+        zentraler Bestandteil der Messsystem Analyse Type 1. Um die Genauigkeit
+        des Messsystems zu bewerten, wird die Differenz zwischen den Messwerten
+        und den Referenzwerten ermittelt. Diese systemaDsche Abweichung wird als
+        Bias bezeichnet und kann sowohl posiDve als auch negaDve Werte
+        aufweisen. Ein Bias nahe null deutet auf eine geringe systemaDsche
+        Abweichung hin.
       </p>
-      <h1 className="font-semibold text-xl w-9/12">
-        Zweck der Prozessfähigkeitsanalyse
-      </h1>
-      <p>
-        Der Hauptzweck der Prozessfähigkeitsanalyse besteht darin, die Fähigkeit
-        eines Prozesses zu bewerten, konsistent Ergebnisse innerhalb bestimmter
-        Toleranzgrenzen zu liefern. Sie ermöglicht es Organisationen
-        festzustellen, ob ihre Prozesse in der Lage sind, die Anforderungen der
-        Kunden zu erfüllen, und bietet eine Grundlage für Entscheidungsfindung
-        und Maßnahmen zur Prozessverbesserung. Durch das Verständnis der
-        Prozessfähigkeit können Organisationen Quellen von Variationen
-        identifizieren, Fehler reduzieren und die Zufriedenheit der Kunden
-        verbessern.
-      </p>
-      <h1 className="font-semibold text-xl w-9/12">
-        Fähigkeitsindizes Cm, Cmk, Cp, Cpk
-      </h1>
-      <p>
-        Fähigkeitsindizes sind numerische Maße, die die Prozessfähigkeit in
-        Bezug auf die Spezifikationsgrenzen quantifizieren. Sie bieten eine
-        standardisierte Möglichkeit, die Leistungsfähigkeit eines Prozesses zu
-        bewerten und zu vergleichen. Hier sind die wichtigsten
-        Fähigkeitsindizes:
-      </p>
-      <p>Die einzelnen Buchstaben der Abkürzungen stehen für:</p>
-      <ul className="list-inside list-disc">
-        <li>C: Capability („Fähigkeit“)</li>
-        <li>m: machine</li>
-        <li>p: process</li>
-        <li>
-          K: Katayori (japanisch), was so viel heißt wie „Bias“ oder
-          „Verschiebung“
-        </li>
-      </ul>
-      <h1 className="font-semibold text-xl w-9/12">
-        Unterschied zwischen „Maschine“ und „Prozess“
-      </h1>
-      <p>
-        Bei der Unterscheidung zwischen der Maschinen- und Prozessfähigkeit geht
-        es vor allem um den Unterschied im Faktor Zeit:
-      </p>
-      <ul>
-        <li>
-          Die Maschinenfähigkeit (Cm, Cmk) ist eher eine <b>Momentaufnahme</b>{" "}
-          und quantifiziert, wie gut eine Maschine im Prinzip in der Lage ist,
-          die Kundenspezifikation einzuhalten. In diesem kurzen Zeitraum können
-          sich eigentlich nur Störungen aus den Bereichen „Maschine“ und
-          „Messung“ auf das Messergebnis auswirken.
-          <img className="md:w-[70%] m-auto" src={IMAGE_2} />
-        </li>
 
-        <li>
-          Die Maschinenfähigkeit (Cp, Cpk) ist eine <b>Langfristaufnahme</b> und
-          quantifiziert, wie gut ein Prozess über längere Zeit in der Lage ist,
-          die Kundenspezifikation einzuhalten. In diesem längeren Zeitraum
-          können sich Störungen aus vielen Bereichen auf das Messergebnis
-          auswirken. Häufig nimmt man über die Zeit (leichte)
-          Mittelwertsverschiebungen wahr. Diese führen in der Regel zu einer
-          größeren Gesamtstreuung vom gemessenen Merkmal und damit zu geringere
-          Fähigkeitskennwerten (Cp &lt; Cm und Cmk &lt; Cpk).
-          <img className="md:w-[70%] m-auto" src={IMAGE_1} />
-        </li>
-        <p>Ishikawa</p>
-      </ul>
       <h1 className="font-semibold text-xl w-9/12">
-        Unterschied zwischen „C“ und „CK“
-      </h1>
-      <h1 className="font-semibold text-base w-9/12">
-        „Potentielle“ Fähigkeiten Cm und Cp
+        Systema8sche Abweichung vom Messnormal („Bias“)
       </h1>
       <p>
-        Cm und Cp sind Fähigkeitskennwerte, die die Streuung der Prozessdaten im
-        Vergleich zu der Toleranzbreite quantifizieren, ohne eine mögliche
-        Verschiebung des Prozesses zu berücksichtigen. Diese Kennwerte liefern
-        Einblicke in die inhärente Fähigkeit des Prozesses, ohne dessen
-        Ausrichtung an den Spezifikationsgrenzen zu berücksichtigen.
+        Die systemaDsche Abweichung vom Messnormal, auch als Bias bezeichnet,
+        spielt eine entscheidende Rolle bei der Messsystem Analyse Type 1. Diese
+        Abweichung tritt auf, wenn das Messsystem wiederholt Messwerte liefert,
+        die systemaDsch vom tatsächlichen Wert abweichen. Ein Bias kann posiDve
+        oder negaDve Werte aufweisen und deutet darauf hin, dass das Messsystem
+        systemaDsche Fehler enthält. Die systemaDsche Abweichung kann
+        verschiedene Ursachen haben, wie z. B. Kalibrierungsprobleme,
+        Umwelteinflüsse oder Fehler in der Messausrüstung. Durch die Berechnung
+        des Biases kann die Genauigkeit des Messsystems bewertet werden. Ein
+        Bias nahe null zeigt an, dass das Messsystem nur geringfügige oder keine
+        systemaDschen Abweichungen aufweist. Eine größere systemaDsche
+        Abweichung kann jedoch die Genauigkeit und Zuverlässigkeit der Messungen
+        beeinflussen. Daher ist es von entscheidender Bedeutung, den Bias im
+        Rahmen der Messsystem Analyse Type 1 zu bewerten und geeignete Maßnahmen
+        zu ergreifen, um systemaDsche Fehler zu reduzieren und die
+        Messgenauigkeit zu verbessern.
       </p>
-      <p>Der Cm- beziehungsweise Cp-Wert wird wie folgt berechnet:</p>
-      <p>
-        C<sub>m</sub> ÷ C<sub>p</sub> = (OSG - USG) / (6α)
-      </p>
-      <p>Wo α die Standardabweichung der Messdaten ist.</p>
-      <h1 className="font-semibold text-base w-9/12">
-        „Tatsächliche“ Fähigkeiten Cmk und Cpk
+
+      <h1 className="font-semibold text-xl w-9/12">
+        Cg - Maß für die zufällige Abweichungen des MessmiJels
       </h1>
+
       <p>
-        Cmk und Cpk sind ähnlich wie Cm und Cp, berücksichtigen jedoch
-        zusätzlich etwaige Abweichungen oder Verschiebungen des Prozesses vom
-        Zielwert. Diese Kennwerte liefern eine umfassende Bewertung der
-        Fähigkeit, indem sie sowohl die Streuung der Prozessdaten als auch den
-        Abstand zwischen dem Prozessmittelwert und den Spezifikationsgrenzen
-        berücksichtigen.
+        Cg ist eine wichDge Kennzahl, die in der Messsystem Analyse Type 1
+        verwendet wird, um die Gesamtabweichung eines Messsystems zu bewerten.
+        Es berücksichDgt sowohl die zufälligen als auch die systemaDschen
+        Abweichungen vom Messnormal. Die Berechnung erfolgt anhand der
+        Standardabweichung der Messwerte und des Biases. Ein höherer Cg-Wert
+        deutet auf eine geringere Gesamtabweichung und somit auf eine höhere
+        Messsystemfähigkeit hin
       </p>
-      <p>
-        Der Kennwerte CmK und CpK werden folgendermaßen aus dem arithmetischen
-        Mittelwert &micro;, der dazugehörigen Standardabweichung α der Messdaten
-        und der oberen (OSG) beziehungsweise unteren (USG) Spezifikationsgrenze
-        berechnet:
-      </p>
-      <p>
-        C<sub>mk</sub> order C<sub>pk</sub> = min ( &mu; - USG , OSG - &mu; ) /
-        3&sigma;
-      </p>
-      <p>
-        Je höher dieser Wert ist, desto sicherer befindet sich das geprüfte
-        Merkmal innerhalb der Kundenspezifikation.
-      </p>
-      <p>
-        Bei den Fähigkeitskennwerten Cm und Cp spricht man häufig auch von der
-        „potentiellen Fähigkeit“, da man diese Fähigkeitskennwerte erreichen
-        könnte, wenn man den Prozess zentrieren würde.{" "}
-      </p>
-      <p>
-        Im besten Fall (Prozessmittelwert liegt genau in der Mitte des
-        Toleranzbereichs) ist CpK = Cp; sonst ist CpK &lt; Cp.
-      </p>
-      <p>
-        Als Grenzwert für Fähigkeitskennwerte werden in vielen Industrien häufig
-        1,33 oder 1,67 angesetzt
-      </p>
-      <p>
-        Die Kennwerte lassen sich nach dieser Definition nur dann berechnen,
-        wenn sowohl eine obere als auch untere Spezifikationsgrenze definiert
-        ist (beidseitig tolerierte Merkmale)
-      </p>
-      <h1 className="font-bold text-2xl w-9/12">
-        Vorteile der Prozessfähigkeitsanalyse
+
+      <h1 className="font-semibold text-xl w-9/12">
+        Cgk - Maß für die Fähigkeit des MessmiJels
       </h1>
+
       <p>
-        Die Prozessfähigkeitsanalyse bietet mehrere Vorteile im
-        Qualitätsmanagement:
+        Zusätzlich zu Cg ist Cgk ein weiteres wichDges Maß in der Messsystem
+        Analyse Type 1. Cgk bezieht sich auf die Fähigkeit des Messsystems, die
+        Toleranzvorgaben einzuhalten. Es berücksichDgt die systemaDsche
+        Abweichung und die Streuung der Messwerte im Vergleich zur
+        Toleranzbreite. Ein hoher Cgk-Wert zeigt an, dass das Messsystem die
+        Toleranzvorgaben effekDv einhält und somit qualitaDv hochwerDge
+        Messungen ermöglicht.
       </p>
-      <ul className="list-decimal list-inside pl-10 flex flex-col gap-5">
-        <li>
-          Leistungsbeurteilung: Sie bietet eine quantitative Messgröße für die
-          Prozessleistung und ermöglicht es Organisationen festzustellen, ob
-          ihre Prozesse die Anforderungen der Kunden erfüllen.
-        </li>
-        <li>
-          Bei Prüfentscheiden wird das Risiko von Alpha- und Beta-Fehlern
-          reduziert, wenn der Prozess eine gute Fähigkeit hat.
-        </li>
-        <li>
-          Identifizierung von Variationen: Durch die Analyse der
-          Prozessfähigkeit können Organisationen Quellen von Variationen
-          identifizieren und sich auf die Reduzierung konzentrieren, um die
-          Prozessstabilität und -konsistenz zu verbessern.
-        </li>
-        <li>
-          Identifizierung von Variationen: Durch die Analyse der
-          Prozessfähigkeit können Organisationen Quellen von Variationen
-          identifizieren und sich auf die Reduzierung konzentrieren, um die
-          Prozessstabilität und -konsistenz zu verbessern.
-        </li>
-        <li>
-          Entscheidungsfindung: Die aus der Prozessfähigkeitsanalyse gewonnenen
-          Erkenntnisse unterstützen eine fundierte Entscheidungsfindung in Bezug
-          auf Prozessänderungen, Lieferantenauswahl und Kundenanforderungen.
-        </li>
-      </ul>
-      <h1 className="font-bold text-2xl w-9/12">Fazit</h1>
+
+      <h1 className="font-semibold text-xl w-9/12">Fazit</h1>
       <p>
-        Die Prozessfähigkeitsanalyse ist ein wichtiges Werkzeug im
-        Qualitätsmanagement, das es Organisationen ermöglicht, ihre Prozesse zu
-        bewerten und zu verbessern. Durch das Verständnis der Fähigkeitsindizes
-        wie Cm, Cmk, Cp und Cpk erhalten Organisationen wertvolle Einblicke in
-        die Leistungsfähigkeit ihrer Prozesse, Variationen und die Ausrichtung
-        an den Kundenspezifikationen.
-      </p>
-      <p>
-        Dies unterstützt sie bei der Umsetzung von Maßnahmen zur
-        Prozessverbesserung, Steigerung der Effizienz und Erhöhung der
-        Kundenzufriedenheit.
-      </p>
-      <p>
-        Die Prozessfähigkeitsanalyse ermöglicht es Organisationen, datenbasierte
-        Entscheidungen zu treffen und ihre Qualität und Wettbewerbsfähigkeit
-        kontinuierlich zu verbessern
+        Die Messsystem Analyse Type 1 ist ein unverzichtbares Werkzeug zur
+        Bewertung und OpDmierung von Messprozessen. Durch die Berechnung der
+        systemaDschen Abweichungen, insbesondere mit den Kenngrößen Cg und Cgk,
+        kann die Genauigkeit und Zuverlässigkeit von Messsystemen präzise
+        beurteilt werden. Dies ermöglicht Unternehmen, die Produktqualität zu
+        verbessern, Kosten zu senken und das Kundenvertrauen zu stärken. Eine
+        fundierte Analyse der Messsysteme unterstützt auch die ProzessopDmierung
+        und Effizienzsteigerung. Die Messsystem Analyse Type 1 ist somit ein
+        essenDeller Bestandteil eines effekDven Qualitätsmanagements.
       </p>
     </div>
   );

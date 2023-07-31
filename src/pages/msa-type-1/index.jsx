@@ -12,7 +12,7 @@ import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
 
 const MsaType1 = () => {
-  const [referenceValue, setReferenceValue] = useState();
+  const [referenceValue, setReferenceValue] = useState(11.6);
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(false);
   const [column, setColumn] = useState(0);
