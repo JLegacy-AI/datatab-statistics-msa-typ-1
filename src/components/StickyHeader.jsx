@@ -24,6 +24,7 @@ const StickyHeader = () => {
         <a
           className={buttonStyle(false)}
           href="https://qm-datalab.de/prozessfaehigkeitsanalyse"
+          target="_blank"
         >
           Prozessfähigkeit
         </a>
