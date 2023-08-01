@@ -2,20 +2,30 @@ import React from "react";
 import jstat from "jStat";
 import { calculateBias, calculateT } from "../utils/utils";
 
-const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
+const ProcessStatistics = ({
+  data,
+  referenceValue,
+  USL,
+  LSL,
+  percentageTolerance,
+  k,
+}) => {
   const tolerance = USL - LSL;
   const standardDeviation = jstat.stdev(data);
   const mean = jstat.mean(data);
-  let cg = tolerance / (6 * standardDeviation);
-  let cgk = Math.abs(mean - tolerance) / (3 * standardDeviation);
+
+  const bias = mean - referenceValue;
+  const tValue = calculateT(data, referenceValue);
+  const pValue = jstat.ttest(Number(referenceValue), data, 2);
+
+  let cg = (percentageTolerance * tolerance) / (k * standardDeviation);
+  let cgk =
+    (0.5 * percentageTolerance * tolerance - Math.abs(bias)) /
+    (0.5 * k * standardDeviation);
   if (data.length < 2) {
     cg = "";
     cgk = "";
   }
-
-  const bias = calculateBias(data, referenceValue);
-  const tValue = calculateT(data, referenceValue);
-  const pValue = jstat.ttest(Number(referenceValue), data, 2);
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -25,14 +35,6 @@ const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
           </h3>
           <table>
             <tbody>
-              <tr>
-                <td>Cg</td>
-                <td>{typeof cg === "string" ? cg : cg.toFixed(6)}</td>
-              </tr>
-              <tr>
-                <td>Cgk</td>
-                <td>{typeof cgk === "string" ? cgk : cgk.toFixed(6)}</td>
-              </tr>
               <tr>
                 <td>Reference Value</td>
                 <td>{referenceValue}</td>
@@ -66,7 +68,7 @@ const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
         </div>
         <div>
           <h3 className="text-xl font-semibold bg-black text-white  text-center">
-            Bias
+            Bias and Gage Capability
           </h3>
           <table>
             <tbody>
@@ -81,6 +83,18 @@ const ProcessStatistics = ({ data, referenceValue, USL, LSL }) => {
               <tr>
                 <td>P-Value</td>
                 <td>{isNaN(pValue) ? "NaN" : pValue.toFixed(5)}</td>
+              </tr>
+              <tr className="h-5">
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Cg</td>
+                <td>{typeof cg === "string" ? cg : cg.toFixed(6)}</td>
+              </tr>
+              <tr>
+                <td>Cgk</td>
+                <td>{typeof cgk === "string" ? cgk : cgk.toFixed(6)}</td>
               </tr>
             </tbody>
           </table>

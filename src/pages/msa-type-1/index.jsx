@@ -153,6 +153,8 @@ const MsaType1 = () => {
               referenceValue={referenceValue}
               LSL={LSL}
               USL={USL}
+              percentageTolerance={percentageTolerance}
+              k={k}
             />
           </>
         ) : (
