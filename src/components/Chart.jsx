@@ -10,6 +10,7 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
       <Plot
         data={[
           {
+            name: "Values",
             x: data.map((v, i) => i + 1),
             y: data.map((v, i) => v),
             type: "scatter",
@@ -17,6 +18,7 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
             marker: { color: "#1f77b4" },
           },
           {
+            name: "Mean",
             x: [1, data.length],
             y: [mean, mean],
             mode: "lines",
@@ -26,6 +28,7 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
             marker: { color: "blue" },
           },
           {
+            name: "ref",
             x: [1, data.length],
             y: [referenceValue, referenceValue],
             mode: "lines",
@@ -35,12 +38,14 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
             marker: { color: "red" },
           },
           {
+            name: "ref + 0.1 * Tol",
             x: [1, data.length],
             y: [mean + 0.1 * tolerance, mean + 0.1 * tolerance],
             mode: "lines",
             marker: { color: "red" },
           },
           {
+            name: "ref - 0.1 * Tol",
             x: [1, data.length],
             y: [mean - 0.1 * tolerance, mean - 0.1 * tolerance],
             mode: "lines",
@@ -60,7 +65,13 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
             showticklabels: true,
             zeroline: false,
           },
-          showlegend: false,
+          showlegend: true,
+          legend: {
+            xanchor: "center",
+            x: 0.5,
+            y: 1.2,
+            orientation: "h",
+          },
         }}
       />
     </div>

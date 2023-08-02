@@ -18,9 +18,9 @@ const ProcessStatistics = ({
   const tValue = calculateT(data, referenceValue);
   const pValue = jstat.ttest(Number(referenceValue), data, 2);
 
-  let cg = (percentageTolerance * tolerance) / (k * standardDeviation);
+  let cg = ((percentageTolerance / 100) * tolerance) / (k * standardDeviation);
   let cgk =
-    (0.5 * percentageTolerance * tolerance - Math.abs(bias)) /
+    (((0.5 * percentageTolerance) / 100) * tolerance - Math.abs(bias)) /
     (0.5 * k * standardDeviation);
   if (data.length < 2) {
     cg = "";
@@ -74,7 +74,7 @@ const ProcessStatistics = ({
             <tbody>
               <tr>
                 <td>Bias</td>
-                <td>{bias}</td>
+                <td>{isNaN(bias) ? "" : bias.toFixed(6)}</td>
               </tr>
               <tr>
                 <td>T</td>
