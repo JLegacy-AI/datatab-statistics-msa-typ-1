@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import SAMPLE_DATA from "../../assets/Process capability sample data.csv";
 import Setting from "../../components/Setting";
@@ -10,8 +10,11 @@ import Swal from "sweetalert2";
 import ContentComponent from "../../components/ContentComponent";
 import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
+import { useReactToPrint } from "react-to-print";
 
 const MsaType1 = () => {
+  const printComponentRef = useRef(null);
+
   const [referenceValue, setReferenceValue] = useState(11.6);
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(false);
@@ -21,6 +24,7 @@ const MsaType1 = () => {
   const [k, setK] = useState(4);
   const [percentageTolerance, setPercentageTolerance] = useState(20);
 
+  // Read File
   const readFile = (file) => {
     const reader = new FileReader();
 
@@ -36,6 +40,7 @@ const MsaType1 = () => {
     reader.readAsBinaryString(file);
   };
 
+  // Handle File Selection
   const handleFileSelection = (e) => {
     const file = e.target.files[0];
     readFile(file);
@@ -47,6 +52,7 @@ const MsaType1 = () => {
     });
   };
 
+  // Fetch Data
   const fetchData = async () => {
     try {
       const response = await fetch(SAMPLE_DATA);
@@ -64,10 +70,12 @@ const MsaType1 = () => {
     }
   };
 
+  // On start Read FIle
   useEffect(() => {
     fetchData();
   }, []);
 
+  // Handle Clear Table
   const handleClearTable = () => {
     let emptyData = [];
     for (let i = 0; i < 40; i++) {
@@ -85,6 +93,18 @@ const MsaType1 = () => {
       showConfirmButton: false,
     });
   };
+
+  // Handle Print
+  const handleToPrint = useReactToPrint({
+    content: () => printComponentRef.current,
+    documentTitle: "Datatab Result & Statistics",
+    pageStyle: `@media print {
+        @page {
+          size: 300mm 300mm;
+          margin: 20mm 10mm;
+        }
+      }`,
+  });
 
   return (
     <div>
@@ -140,23 +160,33 @@ const MsaType1 = () => {
               referenceValue={referenceValue}
             />
             <hr className="border my-10" />
-            <Results
-              data={convertToArray(data, column)}
-              LSL={LSL}
-              USL={USL}
-              referenceValue={referenceValue}
-              column={data.length > 0 ? data[0][column] : "N/A"}
-              percentageTolerance={percentageTolerance}
-            />
-            <hr className="border my-10" />
-            <ProcessStatistics
-              data={convertToArray(data, column)}
-              referenceValue={referenceValue}
-              LSL={LSL}
-              USL={USL}
-              percentageTolerance={percentageTolerance}
-              k={k}
-            />
+            <div ref={printComponentRef}>
+              <Results
+                data={convertToArray(data, column)}
+                LSL={LSL}
+                USL={USL}
+                referenceValue={referenceValue}
+                column={data.length > 0 ? data[0][column] : "N/A"}
+                percentageTolerance={percentageTolerance}
+              />
+              <hr className="border my-10" />
+              <ProcessStatistics
+                data={convertToArray(data, column)}
+                referenceValue={referenceValue}
+                LSL={LSL}
+                USL={USL}
+                percentageTolerance={percentageTolerance}
+                k={k}
+              />
+            </div>
+            <div className=" flex justify-center items-center py-5">
+              <button
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                onClick={() => handleToPrint()}
+              >
+                Print Result & Statistics
+              </button>
+            </div>
           </>
         ) : (
           <div className="h-60 flex justify-center items-center">

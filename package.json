@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://qm-datalab.de/msatyp1",
   "dependencies": {
-    "@babel/plugin-prosposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@handsontable/react": "^13.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,6 +19,7 @@
     "react-icons": "^4.10.1",
     "react-plotly.js": "^2.6.0",
     "react-scripts": "5.0.1",
+    "react-to-print": "^2.14.13",
     "simple-statistics": "^7.8.3",
     "sweetalert2": "^11.7.12",
     "web-vitals": "^2.1.4",
