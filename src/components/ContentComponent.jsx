@@ -30,7 +30,7 @@ const ContentComponent = () => {
         <li>Einzigartige Nutzerfreundlichkeit: Alle Analysen auf Knopfdruck</li>
         <li>Kein Installations- und Wartungsaufwand: Direkt im Browser</li>
       </ul>
-
+      <hr className="border my-10" />
       <h1 className="font-bold text-2xl w-9/12">
         Messsystem Analyse Type 1: Nutzen, Berechnung und Bewertung der
         systematischen und zufälligen Abweichungen vom Messnormal (Cg und Cgk)
