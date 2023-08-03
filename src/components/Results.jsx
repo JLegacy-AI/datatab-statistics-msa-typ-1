@@ -1,7 +1,14 @@
 import React from "react";
 import Chart from "./Chart";
 
-const Results = ({ data, column, LSL, USL, referenceValue }) => {
+const Results = ({
+  data,
+  column,
+  LSL,
+  USL,
+  referenceValue,
+  percentageTolerance,
+}) => {
   return (
     <div>
       <h1 className="font-bold text-2xl">Results</h1>
@@ -21,6 +28,7 @@ const Results = ({ data, column, LSL, USL, referenceValue }) => {
               USL={USL}
               referenceValue={referenceValue}
               column={column}
+              percentageTolerance={percentageTolerance}
             />
           )}
         </div>

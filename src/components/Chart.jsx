@@ -2,7 +2,14 @@ import jstat from "jStat";
 import React from "react";
 import Plot from "react-plotly.js";
 
-const Chart = ({ data, LSL, USL, referenceValue, column }) => {
+const Chart = ({
+  data,
+  LSL,
+  USL,
+  referenceValue,
+  column,
+  percentageTolerance,
+}) => {
   const tolerance = Math.abs(USL - LSL);
   const mean = jstat.mean(data);
   return (
@@ -38,16 +45,22 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
             marker: { color: "red" },
           },
           {
-            name: "ref + 0.1 * Tol",
+            name: `ref + ${percentageTolerance / 0.2} * Tol`,
             x: [1, data.length],
-            y: [mean + 0.1 * tolerance, mean + 0.1 * tolerance],
+            y: [
+              mean + (percentageTolerance / 0.2) * tolerance,
+              mean + (percentageTolerance / 0.2) * tolerance,
+            ],
             mode: "lines",
             marker: { color: "red" },
           },
           {
-            name: "ref - 0.1 * Tol",
+            name: `ref - ${percentageTolerance / 0.2} * Tol`,
             x: [1, data.length],
-            y: [mean - 0.1 * tolerance, mean - 0.1 * tolerance],
+            y: [
+              mean - (percentageTolerance / 0.2) * tolerance,
+              mean - (percentageTolerance / 0.2) * tolerance,
+            ],
             mode: "lines",
             marker: { color: "red" },
           },
@@ -66,12 +79,6 @@ const Chart = ({ data, LSL, USL, referenceValue, column }) => {
             zeroline: false,
           },
           showlegend: true,
-          legend: {
-            xanchor: "center",
-            x: 0.5,
-            y: 1.2,
-            orientation: "h",
-          },
         }}
       />
     </div>

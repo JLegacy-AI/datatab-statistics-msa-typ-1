@@ -146,6 +146,7 @@ const MsaType1 = () => {
               USL={USL}
               referenceValue={referenceValue}
               column={data.length > 0 ? data[0][column] : "N/A"}
+              percentageTolerance={percentageTolerance}
             />
             <hr className="border my-10" />
             <ProcessStatistics
