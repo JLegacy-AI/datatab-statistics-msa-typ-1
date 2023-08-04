@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import ContentComponent from "../../components/ContentComponent";
 import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
-import { useReactToPrint } from "react-to-print";
+// import { useReactToPrint } from "react-to-print";
 
 const MsaType1 = () => {
   const printComponentRef = useRef(null);
@@ -95,16 +95,16 @@ const MsaType1 = () => {
   };
 
   // Handle Print
-  const handleToPrint = useReactToPrint({
-    content: () => printComponentRef.current,
-    documentTitle: "Datatab Report",
-    pageStyle: `@media print {
-        @page {
-          size: 300mm 300mm;
-          margin: 20mm 10mm;
-        }
-      }`,
-  });
+  // const handleToPrint = useReactToPrint({
+  //   content: () => printComponentRef.current,
+  //   documentTitle: "Datatab Report",
+  //   pageStyle: `@media print {
+  //       @page {
+  //         size: 300mm 300mm;
+  //         margin: 20mm 10mm;
+  //       }
+  //     }`,
+  // });
 
   return (
     <div>
@@ -179,14 +179,15 @@ const MsaType1 = () => {
                 k={k}
               />
             </div>
-            <div className=" flex justify-center items-center py-5">
+            {/* Print Buttons */}
+            {/* <div className=" flex justify-center items-center py-5">
               <button
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 onClick={() => handleToPrint()}
               >
                 Print Report
               </button>
-            </div>
+            </div> */}
           </>
         ) : (
           <div className="h-60 flex justify-center items-center">
