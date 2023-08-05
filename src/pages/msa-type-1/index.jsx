@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import ContentComponent from "../../components/ContentComponent";
 import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
+import Documentation from "../../components/Documentation";
 // import { useReactToPrint } from "react-to-print";
 
 const MsaType1 = () => {
@@ -144,21 +145,24 @@ const MsaType1 = () => {
         {visible ? (
           <>
             <hr className=" mb-5" />
-            <Setting
-              data={data}
-              column={column}
-              setColumn={setColumn}
-              setLSL={setLSL}
-              setUSL={setUSL}
-              LSL={LSL}
-              USL={USL}
-              k={k}
-              setK={setK}
-              percentageTolerance={percentageTolerance}
-              setPercentageTolerance={setPercentageTolerance}
-              setReferenceValue={setReferenceValue}
-              referenceValue={referenceValue}
-            />
+            <div className="grid grid-cols-2 gap-4">
+              <Setting
+                data={data}
+                column={column}
+                setColumn={setColumn}
+                setLSL={setLSL}
+                setUSL={setUSL}
+                LSL={LSL}
+                USL={USL}
+                k={k}
+                setK={setK}
+                percentageTolerance={percentageTolerance}
+                setPercentageTolerance={setPercentageTolerance}
+                setReferenceValue={setReferenceValue}
+                referenceValue={referenceValue}
+              />
+              <Documentation />
+            </div>
             <hr className="border my-10" />
             <div ref={printComponentRef}>
               <Results
