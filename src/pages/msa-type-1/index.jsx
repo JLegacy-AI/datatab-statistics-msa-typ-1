@@ -3,19 +3,14 @@ import * as XLSX from "xlsx";
 import SAMPLE_DATA from "../../assets/Process capability sample data.csv";
 import Setting from "../../components/Setting";
 import Results from "../../components/Results";
-import {
-  convertToArray,
-  createInitialData,
-  documentationTable,
-} from "../../utils/utils";
+import { convertToArray, createInitialData } from "../../utils/utils";
 import ProcessStatistics from "../../components/ProcessStatistics";
-import jstat from "jStat";
+
 import Swal from "sweetalert2";
 import ContentComponent from "../../components/ContentComponent";
 import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
 import Documentation from "../../components/Documentation";
-import PrintingComponent from "../../components/PrintingComponent";
 import { useReactToPrint } from "react-to-print";
 
 const MsaType1 = () => {
