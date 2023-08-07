@@ -45,21 +45,21 @@ const Chart = ({
             marker: { color: "red" },
           },
           {
-            name: `ref + ${percentageTolerance / 2} * Tol`,
+            name: `ref + ${percentageTolerance / 100} * Tol`,
             x: [1, data.length],
             y: [
-              mean + (percentageTolerance / 2) * tolerance,
-              mean + (percentageTolerance / 2) * tolerance,
+              mean + (percentageTolerance / 100) * tolerance,
+              mean + (percentageTolerance / 100) * tolerance,
             ],
             mode: "lines",
             marker: { color: "red" },
           },
           {
-            name: `ref - ${percentageTolerance / 2} * Tol`,
+            name: `ref - ${percentageTolerance / 100} * Tol`,
             x: [1, data.length],
             y: [
-              mean - (percentageTolerance / 2) * tolerance,
-              mean - (percentageTolerance / 2) * tolerance,
+              mean - (percentageTolerance / 100) * tolerance,
+              mean - (percentageTolerance / 100) * tolerance,
             ],
             mode: "lines",
             marker: { color: "red" },

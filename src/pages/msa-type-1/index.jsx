@@ -3,7 +3,11 @@ import * as XLSX from "xlsx";
 import SAMPLE_DATA from "../../assets/Process capability sample data.csv";
 import Setting from "../../components/Setting";
 import Results from "../../components/Results";
-import { convertToArray, createInitialData } from "../../utils/utils";
+import {
+  convertToArray,
+  createInitialData,
+  documentationTable,
+} from "../../utils/utils";
 import ProcessStatistics from "../../components/ProcessStatistics";
 import jstat from "jStat";
 import Swal from "sweetalert2";
@@ -11,11 +15,21 @@ import ContentComponent from "../../components/ContentComponent";
 import DataTable from "../../components/Handsontable";
 import "../../utils/msa-type-stats";
 import Documentation from "../../components/Documentation";
-// import { useReactToPrint } from "react-to-print";
+import PrintingComponent from "../../components/PrintingComponent";
+import { useReactToPrint } from "react-to-print";
 
 const MsaType1 = () => {
   const printComponentRef = useRef(null);
 
+  //Only For Printing
+  const [product, setProduct] = useState("");
+  const [gauge, setGauge] = useState("");
+  const [productFeature, setProductFeature] = useState("");
+  const [messNormal, setMessNormal] = useState("");
+  const [dateOfMeasurement, setDateOfMeasurement] = useState("");
+  const [reportCreater, setReportCreater] = useState("");
+
+  // For Computation
   const [referenceValue, setReferenceValue] = useState(11.6);
   const [data, setData] = useState([]);
   const [visible, setVisible] = useState(false);
@@ -96,16 +110,41 @@ const MsaType1 = () => {
   };
 
   // Handle Print
-  // const handleToPrint = useReactToPrint({
-  //   content: () => printComponentRef.current,
-  //   documentTitle: "Datatab Report",
-  //   pageStyle: `@media print {
-  //       @page {
-  //         size: 300mm 300mm;
-  //         margin: 20mm 10mm;
-  //       }
-  //     }`,
-  // });
+  const handleToPrint = useReactToPrint({
+    content: () => {
+      //Heading Documentation
+      const heading = document.createElement("h1");
+      heading.setAttribute("class", "font-bold text-2xl mb-3");
+      heading.textContent = "Documentation";
+
+      //Import Table
+      const table = documentationTable(
+        product,
+        gauge,
+        productFeature,
+        messNormal,
+        dateOfMeasurement,
+        reportCreater
+      );
+
+      //Container
+      const container = document.createElement("div");
+      container.appendChild(heading);
+      //Table
+      container.appendChild(table);
+      //Report and Statistics
+      container.appendChild(printComponentRef.current);
+
+      return container;
+    },
+    documentTitle: "Datatab Report",
+    pageStyle: `@media print {
+        @page {
+          size: 300mm 300mm;
+          margin: 20mm 10mm;
+        }
+      }`,
+  });
 
   return (
     <div>
@@ -161,7 +200,20 @@ const MsaType1 = () => {
                 setReferenceValue={setReferenceValue}
                 referenceValue={referenceValue}
               />
-              <Documentation />
+              <Documentation
+                product={product}
+                setProduct={setProduct}
+                messNormal={messNormal}
+                setMessNormal={setMessNormal}
+                gauge={gauge}
+                setGauge={setGauge}
+                productFeature={productFeature}
+                setProductFeature={setProductFeature}
+                reportCreater={reportCreater}
+                setReportCreater={setReportCreater}
+                dateOfMeasurement={dateOfMeasurement}
+                setDateOfMeasurement={setDateOfMeasurement}
+              />
             </div>
             <hr className="border my-10" />
             <div ref={printComponentRef}>
@@ -183,15 +235,16 @@ const MsaType1 = () => {
                 k={k}
               />
             </div>
+
             {/* Print Buttons */}
-            {/* <div className=" flex justify-center items-center py-5">
+            <div className=" flex justify-center items-center pb-10">
               <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 onClick={() => handleToPrint()}
               >
-                Print Report
+                Bericht drucken oder runterladen
               </button>
-            </div> */}
+            </div>
           </>
         ) : (
           <div className="h-60 flex justify-center items-center">
@@ -199,7 +252,7 @@ const MsaType1 = () => {
           </div>
         )}
       </div>
-      <hr className="border my-20" />
+      <hr className="border mb-20" />
       <ContentComponent />
     </div>
   );
