@@ -111,36 +111,11 @@ const MsaType1 = () => {
 
   // Handle Print
   const handleToPrint = useReactToPrint({
-    content: () => {
-      //Heading Documentation
-      const heading = document.createElement("h1");
-      heading.setAttribute("class", "font-bold text-2xl mb-3");
-      heading.textContent = "Documentation";
-
-      //Import Table
-      const table = documentationTable(
-        product,
-        gauge,
-        productFeature,
-        messNormal,
-        dateOfMeasurement,
-        reportCreater
-      );
-
-      //Container
-      const container = document.createElement("div");
-      container.appendChild(heading);
-      //Table
-      container.appendChild(table);
-      //Report and Statistics
-      container.appendChild(printComponentRef.current);
-
-      return container;
-    },
+    content: () => printComponentRef.current,
     documentTitle: "Datatab Report",
     pageStyle: `@media print {
         @page {
-          size: 300mm 300mm;
+          size: 300mm 400mm;
           margin: 20mm 10mm;
         }
       }`,
@@ -184,39 +159,40 @@ const MsaType1 = () => {
         {visible ? (
           <>
             <hr className=" mb-5" />
-            <div className="grid grid-cols-2 gap-4">
-              <Setting
-                data={data}
-                column={column}
-                setColumn={setColumn}
-                setLSL={setLSL}
-                setUSL={setUSL}
-                LSL={LSL}
-                USL={USL}
-                k={k}
-                setK={setK}
-                percentageTolerance={percentageTolerance}
-                setPercentageTolerance={setPercentageTolerance}
-                setReferenceValue={setReferenceValue}
-                referenceValue={referenceValue}
-              />
-              <Documentation
-                product={product}
-                setProduct={setProduct}
-                messNormal={messNormal}
-                setMessNormal={setMessNormal}
-                gauge={gauge}
-                setGauge={setGauge}
-                productFeature={productFeature}
-                setProductFeature={setProductFeature}
-                reportCreater={reportCreater}
-                setReportCreater={setReportCreater}
-                dateOfMeasurement={dateOfMeasurement}
-                setDateOfMeasurement={setDateOfMeasurement}
-              />
-            </div>
-            <hr className="border my-10" />
             <div ref={printComponentRef}>
+              <div className="grid grid-cols-2 gap-4">
+                <Setting
+                  data={data}
+                  column={column}
+                  setColumn={setColumn}
+                  setLSL={setLSL}
+                  setUSL={setUSL}
+                  LSL={LSL}
+                  USL={USL}
+                  k={k}
+                  setK={setK}
+                  percentageTolerance={percentageTolerance}
+                  setPercentageTolerance={setPercentageTolerance}
+                  setReferenceValue={setReferenceValue}
+                  referenceValue={referenceValue}
+                />
+                <Documentation
+                  product={product}
+                  setProduct={setProduct}
+                  messNormal={messNormal}
+                  setMessNormal={setMessNormal}
+                  gauge={gauge}
+                  setGauge={setGauge}
+                  productFeature={productFeature}
+                  setProductFeature={setProductFeature}
+                  reportCreater={reportCreater}
+                  setReportCreater={setReportCreater}
+                  dateOfMeasurement={dateOfMeasurement}
+                  setDateOfMeasurement={setDateOfMeasurement}
+                />
+              </div>
+              <hr className="border my-10" />
+
               <Results
                 data={convertToArray(data, column)}
                 LSL={LSL}
@@ -235,9 +211,9 @@ const MsaType1 = () => {
                 k={k}
               />
             </div>
-
+            <hr className="border mt-10" />
             {/* Print Buttons */}
-            <div className=" flex justify-center items-center pb-10">
+            <div className=" flex justify-center items-center py-10">
               <button
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 onClick={() => handleToPrint()}
