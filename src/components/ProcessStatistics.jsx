@@ -45,11 +45,11 @@ const ProcessStatistics = ({
               </tr>
               <tr>
                 <td>Average</td>
-                <td>{data == [] ? "NaN" : jstat.mean(data).toFixed(6)}</td>
+                <td>{data == [] ? "" : jstat.mean(data).toFixed(6)}</td>
               </tr>
               <tr>
                 <td>Standard dev</td>
-                <td>{data == [] ? "NaN" : jstat.stdev(data).toFixed(6)}</td>
+                <td>{data == [] ? "" : jstat.stdev(data).toFixed(6)}</td>
               </tr>
               <tr>
                 <td></td>
@@ -82,7 +82,7 @@ const ProcessStatistics = ({
               </tr>
               <tr>
                 <td>P-Value</td>
-                <td>{isNaN(pValue) ? "NaN" : pValue.toFixed(5)}</td>
+                <td>{isNaN(pValue) ? "" : pValue.toFixed(5)}</td>
               </tr>
               <tr className="h-5">
                 <td></td>
@@ -90,11 +90,11 @@ const ProcessStatistics = ({
               </tr>
               <tr>
                 <td>Cg</td>
-                <td>{typeof cg === "string" ? cg : cg.toFixed(6)}</td>
+                <td>{typeof cg === "string" ? "" : cg.toFixed(6)}</td>
               </tr>
               <tr>
                 <td>Cgk</td>
-                <td>{typeof cgk === "string" ? cgk : cgk.toFixed(6)}</td>
+                <td>{typeof cgk === "string" ? "" : cgk.toFixed(6)}</td>
               </tr>
             </tbody>
           </table>

@@ -14,6 +14,7 @@ import Documentation from "../../components/Documentation";
 import { useReactToPrint } from "react-to-print";
 
 const MsaType1 = () => {
+  //For printing Component
   const printComponentRef = useRef(null);
 
   //Only For Printing
