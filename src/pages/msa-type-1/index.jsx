@@ -9,7 +9,6 @@ import ProcessStatistics from "../../components/ProcessStatistics";
 import Swal from "sweetalert2";
 import ContentComponent from "../../components/ContentComponent";
 import DataTable from "../../components/Handsontable";
-import "../../utils/msa-type-stats";
 import Documentation from "../../components/Documentation";
 import { useReactToPrint } from "react-to-print";
 
