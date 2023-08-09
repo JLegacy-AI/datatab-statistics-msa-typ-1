@@ -48,8 +48,8 @@ const Chart = ({
             name: `ref + ${percentageTolerance / 100} * Tol`,
             x: [1, data.length],
             y: [
-              mean + (percentageTolerance / 100) * tolerance,
-              mean + (percentageTolerance / 100) * tolerance,
+              referenceValue + (percentageTolerance / 100) * tolerance,
+              referenceValue + (percentageTolerance / 100) * tolerance,
             ],
             mode: "lines",
             marker: { color: "red" },
@@ -58,8 +58,8 @@ const Chart = ({
             name: `ref - ${percentageTolerance / 100} * Tol`,
             x: [1, data.length],
             y: [
-              mean - (percentageTolerance / 100) * tolerance,
-              mean - (percentageTolerance / 100) * tolerance,
+              referenceValue - (percentageTolerance / 100) * tolerance,
+              referenceValue - (percentageTolerance / 100) * tolerance,
             ],
             mode: "lines",
             marker: { color: "red" },

@@ -155,7 +155,7 @@ const MsaType1 = () => {
           <>
             <hr className=" mb-5" />
             <div ref={printComponentRef}>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 <Setting
                   data={data}
                   column={column}
