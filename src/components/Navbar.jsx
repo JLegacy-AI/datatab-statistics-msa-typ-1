@@ -5,7 +5,9 @@ const Navbar = () => {
   return (
     <div className="flex w-screen items-center px-20 py-6 bg-white">
       <div>
-        <img className="h-8 min-w-[100px]" src={LOGO_URL} alt="Logo" />
+        <a href="https://www.qm-datalab.de" target="_blank">
+          <img className="h-8 min-w-[100px]" src={LOGO_URL} alt="Logo" />
+        </a>
       </div>
       <div className="flex-1 flex justify-center items-center px-20 font-semibold">
         Datenanalysen fürs Qualitätsmanagement
