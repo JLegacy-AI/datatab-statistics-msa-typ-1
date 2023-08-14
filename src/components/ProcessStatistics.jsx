@@ -90,11 +90,15 @@ const ProcessStatistics = ({
               </tr>
               <tr>
                 <td>Cg</td>
-                <td>{typeof cg === "string" ? "" : cg.toFixed(6)}</td>
+                <td>
+                  {typeof cg === "string" || isNaN(cg) ? "" : cg.toFixed(6)}
+                </td>
               </tr>
               <tr>
                 <td>Cgk</td>
-                <td>{typeof cgk === "string" ? "" : cgk.toFixed(6)}</td>
+                <td>
+                  {typeof cgk === "string" || isNaN(cgk) ? "" : cgk.toFixed(6)}
+                </td>
               </tr>
             </tbody>
           </table>

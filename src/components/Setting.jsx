@@ -45,7 +45,7 @@ const Setting = ({
   const [selectedButton, setSelectedButton] = useState(0);
 
   return (
-    <div className="px-5">
+    <div className="pr-5">
       <h1 className="font-bold text-2xl">Settings</h1>
       <div className="flex gap-10 items-center">
         <p className="py-5">Variable:</p>
