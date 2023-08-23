@@ -1,18 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import SAMPLE_DATA from "../../assets/Process capability sample data.csv";
-import Setting from "../../components/Setting";
-import Results from "../../components/Results";
 import { convertToArray, createInitialData } from "../../utils/utils";
-import ProcessStatistics from "../../components/ProcessStatistics";
-
 import Swal from "sweetalert2";
-import ContentComponent from "../../components/ContentComponent";
-import DataTable from "../../components/Handsontable";
-import Documentation from "../../components/Documentation";
 import { useReactToPrint } from "react-to-print";
 
+// Lazy Loading
+const Setting = lazy(() => import("../../components/Setting"));
+const Results = lazy(() => import("../../components/Results"));
+const DataTable = lazy(() => import("../../components/Handsontable"));
+const Documentation = lazy(() => import("../../components/Documentation"));
+const ProcessStatistics = lazy(() =>
+  import("../../components/ProcessStatistics")
+);
+
 const MsaType1 = () => {
+  //For Visible and Not Visible on Scrolling
+  const [visibleResults, setVisibleResults] = useState(false);
+
   //For printing Component
   const printComponentRef = useRef(null);
 
@@ -68,13 +73,6 @@ const MsaType1 = () => {
       const response = await fetch(SAMPLE_DATA);
       const blob = await response.blob();
       readFile(blob);
-      Swal.fire({
-        icon: "success",
-        title: "Example Data Loaded",
-        text: `Data Readed from the Sample file`,
-        showConfirmButton: false,
-        timer: 1200,
-      });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -82,6 +80,15 @@ const MsaType1 = () => {
 
   // On start Read FIle
   useEffect(() => {
+    const testFunction = (e) => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 300 && !visibleResults) {
+        setVisibleResults(true);
+      }
+    };
+
+    window.addEventListener("scroll", testFunction);
+
     fetchData();
   }, []);
 
@@ -145,7 +152,15 @@ const MsaType1 = () => {
           </p>
         ) : (
           <>
-            <DataTable dataTable={data} setDataTable={setData} />
+            <Suspense
+              fallback={
+                <p className="flex justify-center items-center font-bold">
+                  Data is Not Present Yet
+                </p>
+              }
+            >
+              <DataTable dataTable={data} setDataTable={setData} />
+            </Suspense>
           </>
         )}
       </div>
@@ -156,55 +171,90 @@ const MsaType1 = () => {
             <hr className=" mb-5" />
             <div ref={printComponentRef}>
               <div className="grid grid-cols-1 md:grid-cols-2">
-                <Setting
-                  data={data}
-                  column={column}
-                  setColumn={setColumn}
-                  setLSL={setLSL}
-                  setUSL={setUSL}
-                  LSL={LSL}
-                  USL={USL}
-                  k={k}
-                  setK={setK}
-                  percentageTolerance={percentageTolerance}
-                  setPercentageTolerance={setPercentageTolerance}
-                  setReferenceValue={setReferenceValue}
-                  referenceValue={referenceValue}
-                />
-                <Documentation
-                  product={product}
-                  setProduct={setProduct}
-                  messNormal={messNormal}
-                  setMessNormal={setMessNormal}
-                  gauge={gauge}
-                  setGauge={setGauge}
-                  productFeature={productFeature}
-                  setProductFeature={setProductFeature}
-                  reportCreater={reportCreater}
-                  setReportCreater={setReportCreater}
-                  dateOfMeasurement={dateOfMeasurement}
-                  setDateOfMeasurement={setDateOfMeasurement}
-                />
+                <Suspense
+                  fallback={
+                    <p className="flex justify-center items-center font-bold">
+                      Data is Not Present Yet
+                    </p>
+                  }
+                >
+                  <Setting
+                    data={data}
+                    column={column}
+                    setColumn={setColumn}
+                    setLSL={setLSL}
+                    setUSL={setUSL}
+                    LSL={LSL}
+                    USL={USL}
+                    k={k}
+                    setK={setK}
+                    percentageTolerance={percentageTolerance}
+                    setPercentageTolerance={setPercentageTolerance}
+                    setReferenceValue={setReferenceValue}
+                    referenceValue={referenceValue}
+                  />
+                </Suspense>
+
+                <Suspense
+                  fallback={
+                    <p className="flex justify-center items-center font-bold">
+                      Data is Not Present Yet
+                    </p>
+                  }
+                >
+                  <Documentation
+                    product={product}
+                    setProduct={setProduct}
+                    messNormal={messNormal}
+                    setMessNormal={setMessNormal}
+                    gauge={gauge}
+                    setGauge={setGauge}
+                    productFeature={productFeature}
+                    setProductFeature={setProductFeature}
+                    reportCreater={reportCreater}
+                    setReportCreater={setReportCreater}
+                    dateOfMeasurement={dateOfMeasurement}
+                    setDateOfMeasurement={setDateOfMeasurement}
+                  />
+                </Suspense>
               </div>
               <hr className="border my-10" />
+              {visibleResults && (
+                <Suspense
+                  fallback={
+                    <p className="flex justify-center items-center font-bold">
+                      Data is Not Present Yet
+                    </p>
+                  }
+                >
+                  <Results
+                    data={convertToArray(data, column)}
+                    LSL={LSL}
+                    USL={USL}
+                    referenceValue={referenceValue}
+                    column={data.length > 0 ? data[0][column] : "N/A"}
+                    percentageTolerance={percentageTolerance}
+                  />
+                </Suspense>
+              )}
 
-              <Results
-                data={convertToArray(data, column)}
-                LSL={LSL}
-                USL={USL}
-                referenceValue={referenceValue}
-                column={data.length > 0 ? data[0][column] : "N/A"}
-                percentageTolerance={percentageTolerance}
-              />
               <hr className="border my-10" />
-              <ProcessStatistics
-                data={convertToArray(data, column)}
-                referenceValue={referenceValue}
-                LSL={LSL}
-                USL={USL}
-                percentageTolerance={percentageTolerance}
-                k={k}
-              />
+              <Suspense
+                fallback={
+                  <p className="flex justify-center items-center font-bold">
+                    Data is Not Present Yet
+                  </p>
+                }
+              >
+                <ProcessStatistics
+                  data={convertToArray(data, column)}
+                  referenceValue={referenceValue}
+                  LSL={LSL}
+                  USL={USL}
+                  percentageTolerance={percentageTolerance}
+                  k={k}
+                />
+              </Suspense>
             </div>
             <hr className="border mt-10" />
             {/* Print Buttons */}
@@ -223,8 +273,6 @@ const MsaType1 = () => {
           </div>
         )}
       </div>
-      <hr className="border mb-20" />
-      <ContentComponent />
     </div>
   );
 };

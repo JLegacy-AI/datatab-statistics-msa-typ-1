@@ -6,7 +6,13 @@ const Navbar = () => {
     <div className="flex w-screen items-center px-20 py-6 bg-white">
       <div>
         <a href="https://www.qm-datalab.de" target="_blank">
-          <img className="h-8 min-w-[100px]" src={LOGO_URL} alt="Logo" />
+          <img
+            className="logo-image  max-h-[35px]  w-auto"
+            src={LOGO_URL}
+            alt="Logo"
+            height={55}
+            width={334}
+          />
         </a>
       </div>
       <div className="flex-1 flex justify-center items-center px-20 font-semibold">
