@@ -1,5 +1,4 @@
 import jstat from "jStat";
-import jState from "jStat";
 
 const convertToArray = (data, column) => {
   let array = [];
