@@ -126,7 +126,7 @@ const MsaType1 = () => {
   return (
     <div>
       <h1 className="font-bold text-2xl mb-3">Data input</h1>
-      <div className="flex gap-4">
+      <div className="flex gap-4 md:flex-row flex-col">
         <button
           className="hover:text-green-600 transition-all duration-300"
           onClick={() => handleClearTable()}

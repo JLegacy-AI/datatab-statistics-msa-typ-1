@@ -70,7 +70,7 @@ const Setting = ({
           )}
         </div>
       </div>
-      <div className="grid gap-6 mb-6 md:grid-cols-2 my-5">
+      <div className="md:grid gap-6 mb-6 md:grid-cols-2 my-5 flex flex-col">
         <div>
           <label
             htmlFor="LSL"

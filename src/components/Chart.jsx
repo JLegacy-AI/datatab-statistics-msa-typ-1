@@ -12,6 +12,7 @@ const Chart = ({
 }) => {
   const tolerance = Math.abs(USL - LSL);
   const mean = jstat.mean(data);
+
   return (
     <div>
       <Plot
@@ -66,9 +67,9 @@ const Chart = ({
           },
         ]}
         layout={{
-          width: 660,
-          height: 400,
-          autosize: false,
+          width: window.screen.width >= 660 ? 660 : window.screen.width * 0.7,
+          height: window.screen.width >= 660 ? 400 : window.screen.width * 0.6,
+          autosize: true,
           xaxis: {
             title: "Beobachtung",
             zeroline: false,
