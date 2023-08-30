@@ -14,17 +14,12 @@ table {
   width: 100%;
 }
 
-/* tr {
-  display: flex;
-  justify-content: start;
+body {
+  zoom: 47%;
 }
 
-th {
-  display: flex;
-  justify-content: start;
+@media (min-width: 768px) {
+  body {
+    zoom: 100%;
+  }
 }
-
-td,
-th {
-  flex: 1;
-} */
