@@ -67,8 +67,8 @@ const Chart = ({
           },
         ]}
         layout={{
-          width: window.screen.width >= 660 ? 660 : window.screen.width * 0.7,
-          height: window.screen.width >= 660 ? 400 : window.screen.width * 0.6,
+          width: 660,
+          height: 400,
           autosize: true,
           xaxis: {
             title: "Beobachtung",

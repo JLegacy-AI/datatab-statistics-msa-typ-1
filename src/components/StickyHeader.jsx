@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 
 const buttonStyle = (x) => {
@@ -12,10 +12,10 @@ const StickyHeader = () => {
   return (
     <div
       style={{ zIndex: 10000 }}
-      className="fixed top-0 w-screen bg-white shadow-md text-[10px]  md:text-lg"
+      className="fixed top-0 md:w-[100vw] w-[100vh] bg-white shadow-md text-[10px]  md:text-lg"
     >
       <Navbar />
-      <div className="w-screen  flex md:hidden justify-end items-center pr-5 py-2">
+      <div className="md:w-[100vw] w-[100vh]  flex md:hidden justify-end items-center pr-5 py-2">
         <button
           className=" h-[30px] rounded-md px-2 py-2  bg-blue-800 text-white"
           onClick={() => setVisible(!visible)}
@@ -26,7 +26,7 @@ const StickyHeader = () => {
       <>
         {visible ? (
           <>
-            <div className="px-5 pb-3 flex flex-col">
+            <div className="px-5 pb-3 flex flex-col md:hidden">
               <a className={buttonStyle(true)} href="#">
                 MSA Typ 1
               </a>
