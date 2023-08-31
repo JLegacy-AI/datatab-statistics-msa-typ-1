@@ -10,7 +10,7 @@ const Results = ({
   percentageTolerance,
 }) => {
   return (
-    <div>
+    <div id="graph-content">
       <h1 className="font-bold text-2xl">Results</h1>
       <div className="flex flex-row flex-wrap  gap-4 items-center  justify-center">
         <div className="h-auto flex justify-center items-center flex-col border rounded-lg  pt-2 shadow-lg min-w-[300px]">

@@ -147,14 +147,14 @@ const MsaType1 = () => {
       </div>
       <div>
         {data.length === 0 ? (
-          <p className="flex justify-center items-center font-bold  min-h-[300px] w-screen">
+          <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
             Data is Not Present Yet
           </p>
         ) : (
           <>
             <Suspense
               fallback={
-                <p className="flex justify-center items-center font-bold  min-h-[300px] w-screen">
+                <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
                   Data is Not Present Yet
                 </p>
               }
@@ -173,7 +173,7 @@ const MsaType1 = () => {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <Suspense
                   fallback={
-                    <p className="flex justify-center items-center font-bold  min-h-[300px] w-screen">
+                    <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
                       Data is Not Present Yet
                     </p>
                   }
@@ -197,7 +197,7 @@ const MsaType1 = () => {
 
                 <Suspense
                   fallback={
-                    <p className="flex justify-center items-center font-bold  min-h-[300px] w-screen">
+                    <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
                       Data is Not Present Yet
                     </p>
                   }
@@ -222,7 +222,7 @@ const MsaType1 = () => {
               {visibleResults && (
                 <Suspense
                   fallback={
-                    <p className="flex justify-center items-center font-bold  min-h-[400px] w-screen">
+                    <p className="flex justify-center items-center font-bold  min-h-[25rem] w-screen">
                       Data is Not Present Yet
                     </p>
                   }
@@ -241,7 +241,7 @@ const MsaType1 = () => {
               <hr className="border my-10" />
               <Suspense
                 fallback={
-                  <p className="flex justify-center items-center font-bold  min-h-[300px] w-screen">
+                  <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
                     Data is Not Present Yet
                   </p>
                 }
