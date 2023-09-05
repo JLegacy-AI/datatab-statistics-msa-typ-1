@@ -1,4 +1,3 @@
-import StickyHeader from "./components/StickyHeader";
 import MsaType1 from "./pages/msa-type-1";
 
 import { lazy, Suspense } from "react";

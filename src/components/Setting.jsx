@@ -85,6 +85,7 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setLSL(e.target.value)}
             value={LSL == undefined ? 0 : LSL}
+            aria-label="LSL"
           />
         </div>
 
@@ -102,11 +103,12 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setUSL(e.target.value)}
             value={USL == undefined ? 0 : USL}
+            aria-label="USL"
           />
         </div>
         <div className="col-span-2">
           <label
-            htmlFor="USL"
+            htmlFor="Reference Value"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Reference Value
@@ -118,11 +120,12 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setReferenceValue(e.target.value)}
             value={referenceValue == undefined ? 0 : referenceValue}
+            aria-label="Reference Value"
           />
         </div>
         <div>
           <label
-            htmlFor="LSL"
+            htmlFor="% tolerance"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             % tolerance
@@ -134,12 +137,13 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setPercentageTolerance(e.target.value)}
             value={percentageTolerance == undefined ? 0 : percentageTolerance}
+            aria-label="% tolerance"
           />
         </div>
 
         <div>
           <label
-            htmlFor="USL"
+            htmlFor="k"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             k
@@ -151,6 +155,7 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setK(e.target.value)}
             value={k == undefined ? 0 : k}
+            aria-label="k"
           />
         </div>
       </div>
