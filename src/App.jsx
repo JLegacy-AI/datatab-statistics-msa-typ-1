@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App font-poppins">
       <StickyHeader />
-      <div className="px-20 py-4  mt-[130px]">
+      <div className="px-20 py-4 mt-[150px] md:mt-[180px] lg:mt-[130px]">
         <Suspense
           fallback={
             <>

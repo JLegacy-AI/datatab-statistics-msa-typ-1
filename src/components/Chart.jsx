@@ -1,5 +1,5 @@
 import jstat from "jStat";
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Plot from "react-plotly.js";
 
 const Chart = ({
@@ -12,7 +12,20 @@ const Chart = ({
 }) => {
   const tolerance = Math.abs(USL - LSL);
   const mean = jstat.mean(data);
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    // Update the window width when the window is resized
+    useEffect(() => {
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+  
+      window.addEventListener("resize", handleResize);
+  
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+    const chartWidth = windowWidth > 768 ? 800 : windowWidth - 20;
   return (
     <div>
       <Plot
@@ -67,8 +80,11 @@ const Chart = ({
           },
         ]}
         layout={{
-          width: 660,
-          height: 400,
+          width: chartWidth-100 > 660 ? 660: chartWidth, 
+          height: chartWidth*0.6  < 400 ? 400 : chartWidth*0.5, // Set a fixed chart height or adjust as needed
+        
+          // width: 660,
+          // height: 400,
           autosize: true,
           xaxis: {
             title: "Beobachtung",
