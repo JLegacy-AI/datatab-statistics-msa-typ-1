@@ -16,7 +16,7 @@ const Documentation = ({
 }) => {
   return (
     <div className="h-full flex flex-col justify-between md:px-5 md:border-l-2">
-      <h1 className="font-bold text-2xl">Documentation</h1>
+      <h1 className="font-bold text-2xl">Dokumentation</h1>
       <div className="grid gap-6 mb-6 md:grid-cols-2 my-5">
         <div>
           <label

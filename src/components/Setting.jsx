@@ -46,11 +46,11 @@ const Setting = ({
 
   return (
     <div className="pr-5">
-      <h1 className="font-bold text-2xl">Settings</h1>
+      <h1 className="font-bold text-2xl">Einstellungen</h1>
       <div className="flex gap-10 items-center">
         <p className="py-5">Variable:</p>
         <div className="flex-1 flex justify-left items-center flex-wrap">
-          {data[0] === [] ? (
+          {data[0] == [] ? (
             <p>No Columns Yet</p>
           ) : (
             data[0].map((label, key) => {
@@ -73,10 +73,10 @@ const Setting = ({
       <div className="md:grid gap-6 mb-6 md:grid-cols-2 my-5 flex flex-col">
         <div>
           <label
-            htmlFor="LSL"
+            htmlFor="Untere Spez. Grenze"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            LSL
+            Untere Spez. Grenze
           </label>
           <input
             type="number"
@@ -85,16 +85,16 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setLSL(e.target.value)}
             value={LSL == undefined ? 0 : LSL}
-            aria-label="LSL"
+            aria-label="Untere Spez. Grenze"
           />
         </div>
 
         <div>
           <label
-            htmlFor="USL"
+            htmlFor="Obere Spez. Grenze"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            USL
+            Obere Spez. Grenze
           </label>
           <input
             type="number"
@@ -103,15 +103,15 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setUSL(e.target.value)}
             value={USL == undefined ? 0 : USL}
-            aria-label="USL"
+            aria-label="Obere Spez. Grenze"
           />
         </div>
         <div className="col-span-2">
           <label
-            htmlFor="Reference Value"
+            htmlFor="Referenzwert (Normal)"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Reference Value
+            Referenzwert (Normal)
           </label>
           <input
             type="number"
@@ -120,15 +120,15 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setReferenceValue(e.target.value)}
             value={referenceValue == undefined ? 0 : referenceValue}
-            aria-label="Reference Value"
+            aria-label="Referenzwert (Normal)"
           />
         </div>
         <div>
           <label
-            htmlFor="% tolerance"
+            htmlFor=" % der Toleranz"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            % tolerance
+            % der Toleranz
           </label>
           <input
             type="number"
@@ -137,7 +137,7 @@ const Setting = ({
             placeholder={isNaN(data[1][column]) ? "Disabled" : ""}
             onChange={(e) => setPercentageTolerance(e.target.value)}
             value={percentageTolerance == undefined ? 0 : percentageTolerance}
-            aria-label="% tolerance"
+            aria-label=" % der Toleranz"
           />
         </div>
 

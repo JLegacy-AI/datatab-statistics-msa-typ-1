@@ -31,7 +31,7 @@ const Chart = ({
       <Plot
         data={[
           {
-            name: "Values",
+            name: "Messwerte",
             x: data.map((v, i) => i + 1),
             y: data.map((v, i) => v),
             type: "scatter",
@@ -39,7 +39,7 @@ const Chart = ({
             marker: { color: "#1f77b4" },
           },
           {
-            name: "Mean",
+            name: "Mittelwert",
             x: [1, data.length],
             y: [mean, mean],
             mode: "lines",
@@ -49,7 +49,7 @@ const Chart = ({
             marker: { color: "blue" },
           },
           {
-            name: "ref",
+            name: "Referenzwert",
             x: [1, data.length],
             y: [referenceValue, referenceValue],
             mode: "lines",
@@ -59,7 +59,7 @@ const Chart = ({
             marker: { color: "red" },
           },
           {
-            name: `ref + ${(percentageTolerance / 2 / 100).toFixed(2)} * Tol`,
+            name: `ref + ${(percentageTolerance / 2 / 100).toFixed(2).replace(".",",")} * Tol.`,
             x: [1, data.length],
             y: [
               referenceValue + (percentageTolerance / 2 / 100) * tolerance,
@@ -69,7 +69,7 @@ const Chart = ({
             marker: { color: "red" },
           },
           {
-            name: `ref - ${(percentageTolerance / 2 / 100).toFixed(2)} * Tol`,
+            name: `ref - ${(percentageTolerance / 2 / 100).toFixed(2).replace(".",",")} * Tol.`,
             x: [1, data.length],
             y: [
               referenceValue - (percentageTolerance / 2 / 100) * tolerance,
