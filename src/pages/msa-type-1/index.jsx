@@ -4,6 +4,7 @@ import SAMPLE_DATA from "../../assets/Process capability sample data.csv";
 import { convertToArray, createInitialData } from "../../utils/utils";
 import Swal from "sweetalert2";
 import { useReactToPrint } from "react-to-print";
+import FAQ from "../../components/FAQ";
 
 // Lazy Loading
 const Setting = lazy(() => import("../../components/Setting"));
@@ -273,6 +274,7 @@ const MsaType1 = () => {
           </div>
         )}
       </div>
+      <FAQ />
     </div>
   );
 };
