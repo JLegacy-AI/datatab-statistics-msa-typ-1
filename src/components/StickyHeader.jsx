@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import {RiMenu3Fill,RiMenuFill} from "react-icons/ri"
-
+import { RiMenu3Fill, RiMenuFill } from "react-icons/ri";
 
 const buttonStyle = (x) => {
   return x
@@ -21,28 +20,26 @@ const StickyHeader = () => {
         <button
           className=" rounded-md px-2 py-2.5   text-blue-700 hover:bg-gray-300 hover:text-blue-950"
           onClick={() => setVisible(!visible)}
-        > 
-        {
-          visible 
-          ? 
-            <RiMenu3Fill className="w-6 h-6"/>
-          :<RiMenuFill className="w-6 h-6"/>
-        }
-          
+        >
+          {visible ? (
+            <RiMenu3Fill className="w-6 h-6" />
+          ) : (
+            <RiMenuFill className="w-6 h-6" />
+          )}
         </button>
       </div>
       <>
         {visible ? (
           <>
             <div className="px-5 pb-3 flex flex-col md:hidden">
-              <a
-                className={buttonStyle(true)}
-                href="https://qm-datalab.de/msatyp1"
-                target="_blank"
-              >
+              <a className={buttonStyle(true)} href="#">
                 MSA Typ 1
               </a>
-              <a className={buttonStyle(false)} href="#">
+              <a
+                className={buttonStyle(false)}
+                href="https://qm-datalab.de/msatyp2"
+                target="_blank"
+              >
                 MSA Typ 2
               </a>
               <a
@@ -63,14 +60,14 @@ const StickyHeader = () => {
       </>
       <>
         <div className="px-5 md:px-20 hidden pb-3 md:flex flex-col md:flex-row ">
-          <a
-            className={buttonStyle(true)}
-            href="#"
-          >
+          <a className={buttonStyle(true)} href="#">
             MSA Typ 1
           </a>
-          <a className={buttonStyle(false)} href="https://qm-datalab.de/msatyp2"
-            target="_blank">
+          <a
+            className={buttonStyle(false)}
+            href="https://qm-datalab.de/msatyp2"
+            target="_blank"
+          >
             MSA Typ 2
           </a>
           <a
