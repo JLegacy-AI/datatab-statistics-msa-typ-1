@@ -30,7 +30,11 @@ const StickyHeader = () => {
               <a className={buttonStyle(true)} href="#">
                 MSA Typ 1
               </a>
-              <a className={buttonStyle(false)} href="#">
+              <a
+                className={buttonStyle(false)}
+                href="https://qm-datalab.de/msatyp2"
+                target="_blank"
+              >
                 MSA Typ 2
               </a>
               <a
@@ -54,7 +58,11 @@ const StickyHeader = () => {
           <a className={buttonStyle(true)} href="#">
             MSA Typ 1
           </a>
-          <a className={buttonStyle(false)} href="#">
+          <a
+            className={buttonStyle(false)}
+            href="https://qm-datalab.de/msatyp2"
+            target="_blank"
+          >
             MSA Typ 2
           </a>
           <a
