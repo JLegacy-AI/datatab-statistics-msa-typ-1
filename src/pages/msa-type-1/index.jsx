@@ -4,6 +4,7 @@ import SAMPLE_DATA from "../../assets/Process capability sample data.csv";
 import { convertToArray, createInitialData } from "../../utils/utils";
 import Swal from "sweetalert2";
 import { useReactToPrint } from "react-to-print";
+import FAQ from "../../components/FAQ";
 
 // Lazy Loading
 const Setting = lazy(() => import("../../components/Setting"));
@@ -125,13 +126,13 @@ const MsaType1 = () => {
 
   return (
     <div>
-      <h1 className="font-bold text-2xl mb-3">Data input</h1>
-      <div className="flex gap-4 md:flex-row flex-col items-start">
+      <h1 className="font-bold text-2xl mb-3">Dateninput</h1>
+      <div className="flex gap-4 flex-row  items-start">
         <button
           className="hover:text-green-600 transition-all duration-300"
           onClick={() => handleClearTable()}
         >
-          Clear Table
+          Alle Daten löschen
         </button>
         <input
           className="hover:text-green-600 transition-all duration-300"
@@ -142,20 +143,20 @@ const MsaType1 = () => {
           className="underline hover:text-blue-600 transition-all duration-300"
           onClick={() => fetchData()}
         >
-          Load Example Data
+          Beispieldaten laden
         </button>
       </div>
       <div>
         {data.length === 0 ? (
           <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
-            Data is Not Present Yet
+            Es liegen noch keine Daten vor
           </p>
         ) : (
           <>
             <Suspense
               fallback={
                 <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
-                  Data is Not Present Yet
+                  Es liegen noch keine Daten vor
                 </p>
               }
             >
@@ -174,7 +175,7 @@ const MsaType1 = () => {
                 <Suspense
                   fallback={
                     <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
-                      Data is Not Present Yet
+                      Es liegen noch keine Daten vor
                     </p>
                   }
                 >
@@ -198,7 +199,7 @@ const MsaType1 = () => {
                 <Suspense
                   fallback={
                     <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
-                      Data is Not Present Yet
+                      Es liegen noch keine Daten vor
                     </p>
                   }
                 >
@@ -223,7 +224,7 @@ const MsaType1 = () => {
                 <Suspense
                   fallback={
                     <p className="flex justify-center items-center font-bold  min-h-[25rem] w-screen">
-                      Data is Not Present Yet
+                      Es liegen noch keine Daten vor
                     </p>
                   }
                 >
@@ -242,7 +243,7 @@ const MsaType1 = () => {
               <Suspense
                 fallback={
                   <p className="flex justify-center items-center font-bold  min-h-[18.75rem] w-screen">
-                    Data is Not Present Yet
+                    Es liegen noch keine Daten vor
                   </p>
                 }
               >
@@ -273,6 +274,7 @@ const MsaType1 = () => {
           </div>
         )}
       </div>
+      <FAQ />
     </div>
   );
 };

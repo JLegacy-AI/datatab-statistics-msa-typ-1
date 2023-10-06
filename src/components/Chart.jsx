@@ -1,5 +1,5 @@
 import jstat from "jStat";
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Plot from "react-plotly.js";
 
 const Chart = ({
@@ -12,13 +12,26 @@ const Chart = ({
 }) => {
   const tolerance = Math.abs(USL - LSL);
   const mean = jstat.mean(data);
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    // Update the window width when the window is resized
+    useEffect(() => {
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+  
+      window.addEventListener("resize", handleResize);
+  
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }, []);
+    const chartWidth = windowWidth > 768 ? 800 : windowWidth - 20;
   return (
     <div>
       <Plot
         data={[
           {
-            name: "Values",
+            name: "Messwerte",
             x: data.map((v, i) => i + 1),
             y: data.map((v, i) => v),
             type: "scatter",
@@ -26,7 +39,7 @@ const Chart = ({
             marker: { color: "#1f77b4" },
           },
           {
-            name: "Mean",
+            name: "Mittelwert",
             x: [1, data.length],
             y: [mean, mean],
             mode: "lines",
@@ -36,7 +49,7 @@ const Chart = ({
             marker: { color: "blue" },
           },
           {
-            name: "ref",
+            name: "Referenzwert",
             x: [1, data.length],
             y: [referenceValue, referenceValue],
             mode: "lines",
@@ -46,7 +59,7 @@ const Chart = ({
             marker: { color: "red" },
           },
           {
-            name: `ref + ${(percentageTolerance / 2 / 100).toFixed(2)} * Tol`,
+            name: `ref + ${(percentageTolerance / 2 / 100).toFixed(2).replace(".",",")} * Tol.`,
             x: [1, data.length],
             y: [
               referenceValue + (percentageTolerance / 2 / 100) * tolerance,
@@ -56,7 +69,7 @@ const Chart = ({
             marker: { color: "red" },
           },
           {
-            name: `ref - ${(percentageTolerance / 2 / 100).toFixed(2)} * Tol`,
+            name: `ref - ${(percentageTolerance / 2 / 100).toFixed(2).replace(".",",")} * Tol.`,
             x: [1, data.length],
             y: [
               referenceValue - (percentageTolerance / 2 / 100) * tolerance,
@@ -67,8 +80,11 @@ const Chart = ({
           },
         ]}
         layout={{
-          width: 660,
-          height: 400,
+          width: chartWidth-100 > 660 ? 660: chartWidth, 
+          height: chartWidth*0.6  < 400 ? 400 : chartWidth*0.5, // Set a fixed chart height or adjust as needed
+        
+          // width: 660,
+          // height: 400,
           autosize: true,
           xaxis: {
             title: "Beobachtung",

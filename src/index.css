@@ -8,65 +8,26 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  text-align: justify;
 }
 
 table {
   width: 100%;
-  zoom: 100%;
 }
 
 html {
-  font-size: 90%;
+  font-size: 100%;
 }
 
-#graph-content {
-  zoom: 100%;
-}
-
-.htBorders {
-  display: none;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   html {
-    font-size: 62.5%;
-  }
-
-  table {
-    zoom: 80%;
-  }
-
-  #graph-content {
-    zoom: 70%;
+    font-size: 90%;
   }
 }
 
-@media (max-width: 650px) {
-  #graph-content {
-    zoom: 60%;
-  }
-  table {
-    zoom: 70%;
+@media (max-width: 800px) {
+  html {
+    font-size: 80%;
   }
 }
 
-@media (max-width: 550px) {
-  #graph-content {
-    zoom: 50%;
-  }
-  table {
-    zoom: 60%;
-  }
-}
-
-@media (max-width: 430px) {
-  #graph-content {
-    zoom: 40%;
-  }
-}
-
-@media (max-width: 390px) {
-  #graph-content {
-    zoom: 30%;
-  }
-}

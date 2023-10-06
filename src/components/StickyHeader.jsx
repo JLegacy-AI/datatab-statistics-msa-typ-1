@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
+import { RiMenu3Fill, RiMenuFill } from "react-icons/ri";
 
 const buttonStyle = (x) => {
   return x
@@ -12,15 +13,19 @@ const StickyHeader = () => {
   return (
     <div
       style={{ zIndex: 10000 }}
-      className="fixed top-0 w-screen bg-white shadow-md text-[0.625rem]  md:text-lg"
+      className="fixed top-0 w-screen bg-white shadow-md text-lg"
     >
       <Navbar />
-      <div className="w-screen flex md:hidden justify-end items-center pr-5 py-2">
+      <div className="w-screen flex md:hidden justify-end items-center pr-8 py-2">
         <button
-          className="  rounded-md px-2 py-2.5  bg-blue-800 text-white"
+          className=" rounded-md px-2 py-2.5   text-blue-700 hover:bg-gray-300 hover:text-blue-950"
           onClick={() => setVisible(!visible)}
         >
-          Menu
+          {visible ? (
+            <RiMenu3Fill className="w-6 h-6" />
+          ) : (
+            <RiMenuFill className="w-6 h-6" />
+          )}
         </button>
       </div>
       <>

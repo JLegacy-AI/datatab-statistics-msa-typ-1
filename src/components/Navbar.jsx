@@ -3,7 +3,7 @@ import LOGO_URL from "../assets/logo.png";
 
 const Navbar = () => {
   return (
-    <div className="flex w-screen items-center justify-center md:px-20 py-6 bg-white md:flex-row flex-col">
+    <div className="flex w-screen items-center justify-center md:px-20 py-6 bg-white lg:flex-row flex-col">
       <div>
         <a href="https://www.qm-datalab.de" target="_blank">
           <img

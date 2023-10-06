@@ -31,24 +31,24 @@ const ProcessStatistics = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <h3 className="text-xl font-semibold bg-black text-white  text-center">
-            Basic Statistics
+          Statistiken
           </h3>
           <table>
             <tbody>
               <tr>
-                <td>Reference Value</td>
+                <td>Referenzwert</td>
                 <td>{referenceValue}</td>
               </tr>
               <tr>
-                <td>Measurements</td>
+                <td>Stichprobengröße</td>
                 <td>{data.length}</td>
               </tr>
               <tr>
-                <td>Average</td>
+                <td>Mittelwert</td>
                 <td>{data == [] ? "" : jstat.mean(data).toFixed(6)}</td>
               </tr>
               <tr>
-                <td>Standard dev</td>
+                <td>Standardabweichung</td>
                 <td>{data == [] ? "" : jstat.stdev(data).toFixed(6)}</td>
               </tr>
               <tr>
@@ -56,7 +56,7 @@ const ProcessStatistics = ({
                 <td></td>
               </tr>
               <tr>
-                <td>Tolerance</td>
+                <td>Toleranz</td>
                 <td>
                   {isNaN(USL) || isNaN(LSL)
                     ? ""
@@ -68,20 +68,20 @@ const ProcessStatistics = ({
         </div>
         <div>
           <h3 className="text-xl font-semibold bg-black text-white  text-center">
-            Bias and Gage Capability
+          Messmittelfähigkeit
           </h3>
           <table>
             <tbody>
               <tr>
-                <td>Bias</td>
+                <td>Syst. Abweichung</td>
                 <td>{isNaN(bias) ? "" : bias.toFixed(6)}</td>
               </tr>
               <tr>
-                <td>T</td>
+                <td>T-Wert </td>
                 <td>{tValue}</td>
               </tr>
               <tr>
-                <td>P-Value</td>
+                <td>P-Wert</td>
                 <td>{isNaN(pValue) ? "" : pValue.toFixed(5)}</td>
               </tr>
               <tr className="h-5">
